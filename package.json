@@ -1,0 +1,33 @@
+{
+  "name": "umc-week4",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/index.js",
+    "dev": "nodemon --exec node src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dltjwls02/umc-week4.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dltjwls02/umc-week4/issues"
+  },
+  "homepage": "https://github.com/dltjwls02/umc-week4#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^5.0.0",
+    "http-status-codes": "^2.3.0",
+    "mysql2": "^3.14.1"
+  },
+  "devDependencies": {
+    "@ljharb/tsconfig": "^0.3.2",
+    "nodemon": "^3.1.10"
+  }
+}
