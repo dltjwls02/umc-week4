@@ -18,3 +18,55 @@ export const getStore  = async(storeId)=>{
     conn.release();
   }
 };
+
+export const getMissionsByStoreId = async (storeId) => {
+  try {
+    const missions = await prisma.mission.findMany({
+      where: {
+        storeId: storeId,
+      },
+      select: {
+        id: true,
+        storeId: true,
+        title: true,
+        description: true,
+        status: true,
+        startDate: true,
+        endDate: true,
+      },
+      orderBy: {
+        startDate: "desc",
+      },
+    });
+
+    return missions;
+  } catch (error) {
+    throw new Error(`미션 목록 조회 중 오류가 발생했습니다: ${error.message}`);
+  }
+};
+
+export const getStoreMissions = async (storeId) => {
+  try {
+    const missions = await prisma.mission.findMany({
+      where: {
+        storeId: storeId,
+      },
+      select: {
+        id: true,
+        storeId: true,
+        title: true,
+        description: true,
+        status: true,
+        startDate: true,
+        endDate: true,
+      },
+      orderBy: {
+        startDate: "desc",
+      },
+    });
+
+    return missions;
+  } catch (error) {
+    throw new Error(`미션 목록 조회 중 오류가 발생했습니다: ${error.message}`);
+  }
+};

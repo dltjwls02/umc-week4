@@ -47,3 +47,26 @@ export const responseFromUser = ({ user, preferences }) => {
     preferCategory: preferFoods,
   };
 };
+
+interface MyReviewsRequestDTO {
+  cursor?: number; // optional, 마지막 리뷰 id
+  limit?: number;  // optional, 가져올 리뷰 개수
+}
+
+interface ReviewDTO {
+  id: number;
+  user_id: number;
+  status: string;
+  title: string;
+  content: string;
+  point: number;
+  store: {
+    id: number;
+    name: string;
+    location: string;
+  };
+}
+
+interface MyReviewsResponseDTO {
+  reviews: ReviewDTO[];
+}

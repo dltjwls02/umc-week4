@@ -94,3 +94,50 @@ export const getUserPreferencesByUserId = async (userId) => {
 
   return preferences;
 };
+
+
+export const getAllStoreReviews = async (storeId) => {
+  const reviews = await prisma.userStoreReview.findMany({
+    select: {
+      id: true,
+      content: true,
+      storeId: true,
+      userId: true,
+      store: true,
+      user: true,
+    },
+    where: { storeId: storeId, id: { gt: cursor } },
+    orderBy: { id: "asc" },
+    take: 5,
+  });
+
+  return reviews;
+};
+
+// user.repository.js (또는 review.repository.js)
+export const getMyReviews = async (userId, cursor = 0, limit = 10) => {
+  const reviews = await prisma.review.findMany({
+    where: {
+      userId,
+      id: {
+        gt: cursor,  // cursor가 0이면 무시됨
+      },
+    },
+    orderBy: {
+      id: "asc",
+    },
+    take: limit,
+    include: {
+      store: {  // 가게 정보 포함
+        select: {
+          id: true,
+          name: true,
+          location: true,
+        },
+      },
+    },
+  });
+
+  return reviews;
+};
+

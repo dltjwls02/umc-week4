@@ -9,20 +9,22 @@ export const bodyToReview=(body)=>{
     };
 };
 
-export const responseFromReview=(data)=>{
-    const{review,store}=data;
+// export const responseFromReview=(data)=>{
+//     const{review,store}=data;
 
-    return {
-        id:review[0].id,
-        user_id:review[0].user_id,
-        status:review[0].status|| "",
-        title: review[0].title|| "",
-        content:review[0].content|| "",
-        point: review[0].point|| "",
-        store:(store).map((st)=>({
-            id:st.id,
-            name:st.name,
-            location:st.location
-        }))
-    };
-};
+//     return {
+//         id:review[0].id,
+//         user_id:review[0].user_id,
+//         status:review[0].status|| "",
+//         title: review[0].title|| "",
+//         content:review[0].content|| "",
+//         point: review[0].point|| "",
+//         store:(store).map((st)=>({
+//             id:st.id,
+//             name:st.name,
+//             location:st.location
+//         }))
+//     };
+// };
+
+

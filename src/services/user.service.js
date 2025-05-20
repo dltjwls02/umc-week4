@@ -1,4 +1,7 @@
 import { responseFromUser } from "../dtos/user.dto.js";
+import { getMyReviews } from "../repositories/review.repository.js";
+
+
 import {
   addUser,
   getUser,
@@ -29,4 +32,39 @@ export const userSignUp = async (data) => {
   const preferences = await getUserPreferencesByUserId(joinUserId);
 
   return responseFromUser({ user, preferences });
+};
+
+export const getAllStoreReviews = async (storeId) => {
+  const reviews = await prisma.userStoreReview.findMany({
+    select: {
+      id: true,
+      content: true,
+      storeId: true,
+      userId: true,
+      store: true,
+      user: true,
+    },
+    where: { storeId: storeId, id: { gt: cursor } },
+    orderBy: { id: "asc" },
+    take: 5,
+  });
+
+  return reviews;
+};
+
+export const fetchMyReviews = async (userId, cursor, limit) => {
+  const reviews = await getMyReviews(userId, cursor, limit);
+  return reviews.map(r => ({
+    id: r.id,
+    user_id: r.userId,
+    status: r.status || "",
+    title: r.title || "",
+    content: r.content || "",
+    point: r.point || "",
+    store: {
+      id: r.store.id,
+      name: r.store.name,
+      location: r.store.location,
+    },
+  }));
 };

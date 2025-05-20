@@ -25,6 +25,8 @@ app.post("/user/:userId/review",handleAddReview);
 app.post("/api/mission",handleAddMission);
 app.post("/api/mission/:missionId/challenge",handleChallengeMission);
 
+app.get("/api/stores/:storeId/reviews", handleListStoreReviews);
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
