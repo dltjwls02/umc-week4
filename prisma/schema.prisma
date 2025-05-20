@@ -32,10 +32,10 @@ model User {
 }
 
 model FoodCategory {
-  id        Int      @id @default(autoincrement())
-  name      String   @db.VarChar(50)
-  createdAt DateTime @default(now()) @map("created_at") @db.DateTime(0)
-  updatedAt DateTime @updatedAt @map("updated_at") @db.DateTime(0)
+  id   Int    @id @default(autoincrement())
+  name      String    @db.VarChar(50)
+  createdAt DateTime  @map("created_at") @default(now()) @db.DateTime(0)
+  updatedAt DateTime  @map("updated_at") @updatedAt @db.DateTime(0)
 
   userFavorCategories UserFavorCategory[]
 
@@ -43,17 +43,19 @@ model FoodCategory {
 }
 
 model UserFavorCategory {
-  id             Int  @id @default(autoincrement())
-  userId         Int? @map("user_id") // NULL 허용하므로 Int?
-  foodCategoryId Int  @map("food_category_id")
+  id             Int          @id @default(autoincrement())
+  userId         Int?         @map("user_id")    // NULL 허용하므로 Int?
+  foodCategoryId Int          @map("food_category_id")
 
-  createAt  DateTime? @map("createAt") // nullable datetime
-  updatedAt DateTime? @map("updatedAt") // nullable datetime
+  createAt       DateTime?    @map("createAt")   // nullable datetime
+  updatedAt      DateTime?    @map("updatedAt")  // nullable datetime
 
-  user         User?        @relation(fields: [userId], references: [id])
-  foodCategory FoodCategory @relation(fields: [foodCategoryId], references: [id])
+  user           User?        @relation(fields: [userId], references: [id])
+  foodCategory   FoodCategory @relation(fields: [foodCategoryId], references: [id])
 
   @@index([foodCategoryId], map: "f_category_id")
   @@index([userId], map: "user_id")
   @@map("user_favor_category")
 }
+
+

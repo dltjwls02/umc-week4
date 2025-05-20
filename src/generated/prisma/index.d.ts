@@ -18,6 +18,16 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
  * 
  */
 export type User = $Result.DefaultSelection<Prisma.$UserPayload>
+/**
+ * Model FoodCategory
+ * 
+ */
+export type FoodCategory = $Result.DefaultSelection<Prisma.$FoodCategoryPayload>
+/**
+ * Model UserFavorCategory
+ * 
+ */
+export type UserFavorCategory = $Result.DefaultSelection<Prisma.$UserFavorCategoryPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -153,6 +163,26 @@ export class PrismaClient<
     * ```
     */
   get user(): Prisma.UserDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.foodCategory`: Exposes CRUD operations for the **FoodCategory** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more FoodCategories
+    * const foodCategories = await prisma.foodCategory.findMany()
+    * ```
+    */
+  get foodCategory(): Prisma.FoodCategoryDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.userFavorCategory`: Exposes CRUD operations for the **UserFavorCategory** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more UserFavorCategories
+    * const userFavorCategories = await prisma.userFavorCategory.findMany()
+    * ```
+    */
+  get userFavorCategory(): Prisma.UserFavorCategoryDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -593,7 +623,9 @@ export namespace Prisma {
 
 
   export const ModelName: {
-    User: 'User'
+    User: 'User',
+    FoodCategory: 'FoodCategory',
+    UserFavorCategory: 'UserFavorCategory'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -612,7 +644,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user"
+      modelProps: "user" | "foodCategory" | "userFavorCategory"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -648,10 +680,6 @@ export namespace Prisma {
             args: Prisma.UserCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
-          createManyAndReturn: {
-            args: Prisma.UserCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserPayload>[]
-          }
           delete: {
             args: Prisma.UserDeleteArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$UserPayload>
@@ -668,10 +696,6 @@ export namespace Prisma {
             args: Prisma.UserUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
-          updateManyAndReturn: {
-            args: Prisma.UserUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserPayload>[]
-          }
           upsert: {
             args: Prisma.UserUpsertArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$UserPayload>
@@ -687,6 +711,138 @@ export namespace Prisma {
           count: {
             args: Prisma.UserCountArgs<ExtArgs>
             result: $Utils.Optional<UserCountAggregateOutputType> | number
+          }
+        }
+      }
+      FoodCategory: {
+        payload: Prisma.$FoodCategoryPayload<ExtArgs>
+        fields: Prisma.FoodCategoryFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.FoodCategoryFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FoodCategoryPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.FoodCategoryFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FoodCategoryPayload>
+          }
+          findFirst: {
+            args: Prisma.FoodCategoryFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FoodCategoryPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.FoodCategoryFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FoodCategoryPayload>
+          }
+          findMany: {
+            args: Prisma.FoodCategoryFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FoodCategoryPayload>[]
+          }
+          create: {
+            args: Prisma.FoodCategoryCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FoodCategoryPayload>
+          }
+          createMany: {
+            args: Prisma.FoodCategoryCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.FoodCategoryDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FoodCategoryPayload>
+          }
+          update: {
+            args: Prisma.FoodCategoryUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FoodCategoryPayload>
+          }
+          deleteMany: {
+            args: Prisma.FoodCategoryDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.FoodCategoryUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.FoodCategoryUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FoodCategoryPayload>
+          }
+          aggregate: {
+            args: Prisma.FoodCategoryAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateFoodCategory>
+          }
+          groupBy: {
+            args: Prisma.FoodCategoryGroupByArgs<ExtArgs>
+            result: $Utils.Optional<FoodCategoryGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.FoodCategoryCountArgs<ExtArgs>
+            result: $Utils.Optional<FoodCategoryCountAggregateOutputType> | number
+          }
+        }
+      }
+      UserFavorCategory: {
+        payload: Prisma.$UserFavorCategoryPayload<ExtArgs>
+        fields: Prisma.UserFavorCategoryFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.UserFavorCategoryFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserFavorCategoryPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.UserFavorCategoryFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserFavorCategoryPayload>
+          }
+          findFirst: {
+            args: Prisma.UserFavorCategoryFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserFavorCategoryPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.UserFavorCategoryFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserFavorCategoryPayload>
+          }
+          findMany: {
+            args: Prisma.UserFavorCategoryFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserFavorCategoryPayload>[]
+          }
+          create: {
+            args: Prisma.UserFavorCategoryCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserFavorCategoryPayload>
+          }
+          createMany: {
+            args: Prisma.UserFavorCategoryCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.UserFavorCategoryDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserFavorCategoryPayload>
+          }
+          update: {
+            args: Prisma.UserFavorCategoryUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserFavorCategoryPayload>
+          }
+          deleteMany: {
+            args: Prisma.UserFavorCategoryDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.UserFavorCategoryUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.UserFavorCategoryUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserFavorCategoryPayload>
+          }
+          aggregate: {
+            args: Prisma.UserFavorCategoryAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateUserFavorCategory>
+          }
+          groupBy: {
+            args: Prisma.UserFavorCategoryGroupByArgs<ExtArgs>
+            result: $Utils.Optional<UserFavorCategoryGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.UserFavorCategoryCountArgs<ExtArgs>
+            result: $Utils.Optional<UserFavorCategoryCountAggregateOutputType> | number
           }
         }
       }
@@ -775,6 +931,8 @@ export namespace Prisma {
   }
   export type GlobalOmitConfig = {
     user?: UserOmit
+    foodCategory?: FoodCategoryOmit
+    userFavorCategory?: UserFavorCategoryOmit
   }
 
   /* Types for Logging */
@@ -864,6 +1022,67 @@ export namespace Prisma {
    */
 
 
+  /**
+   * Count Type UserCountOutputType
+   */
+
+  export type UserCountOutputType = {
+    userFavorCategories: number
+  }
+
+  export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    userFavorCategories?: boolean | UserCountOutputTypeCountUserFavorCategoriesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserCountOutputType
+     */
+    select?: UserCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountUserFavorCategoriesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UserFavorCategoryWhereInput
+  }
+
+
+  /**
+   * Count Type FoodCategoryCountOutputType
+   */
+
+  export type FoodCategoryCountOutputType = {
+    userFavorCategories: number
+  }
+
+  export type FoodCategoryCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    userFavorCategories?: boolean | FoodCategoryCountOutputTypeCountUserFavorCategoriesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * FoodCategoryCountOutputType without action
+   */
+  export type FoodCategoryCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FoodCategoryCountOutputType
+     */
+    select?: FoodCategoryCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * FoodCategoryCountOutputType without action
+   */
+  export type FoodCategoryCountOutputTypeCountUserFavorCategoriesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UserFavorCategoryWhereInput
+  }
+
 
   /**
    * Models
@@ -893,33 +1112,39 @@ export namespace Prisma {
     id: number | null
     email: string | null
     name: string | null
-    gender: string | null
+    sex: string | null
     birth: Date | null
     address: string | null
-    detailAddress: string | null
-    phoneNumber: string | null
+    detail_address: string | null
+    phone: string | null
+    createAt: Date | null
+    modifiedAt: Date | null
   }
 
   export type UserMaxAggregateOutputType = {
     id: number | null
     email: string | null
     name: string | null
-    gender: string | null
+    sex: string | null
     birth: Date | null
     address: string | null
-    detailAddress: string | null
-    phoneNumber: string | null
+    detail_address: string | null
+    phone: string | null
+    createAt: Date | null
+    modifiedAt: Date | null
   }
 
   export type UserCountAggregateOutputType = {
     id: number
     email: number
     name: number
-    gender: number
+    sex: number
     birth: number
     address: number
-    detailAddress: number
-    phoneNumber: number
+    detail_address: number
+    phone: number
+    createAt: number
+    modifiedAt: number
     _all: number
   }
 
@@ -936,33 +1161,39 @@ export namespace Prisma {
     id?: true
     email?: true
     name?: true
-    gender?: true
+    sex?: true
     birth?: true
     address?: true
-    detailAddress?: true
-    phoneNumber?: true
+    detail_address?: true
+    phone?: true
+    createAt?: true
+    modifiedAt?: true
   }
 
   export type UserMaxAggregateInputType = {
     id?: true
     email?: true
     name?: true
-    gender?: true
+    sex?: true
     birth?: true
     address?: true
-    detailAddress?: true
-    phoneNumber?: true
+    detail_address?: true
+    phone?: true
+    createAt?: true
+    modifiedAt?: true
   }
 
   export type UserCountAggregateInputType = {
     id?: true
     email?: true
     name?: true
-    gender?: true
+    sex?: true
     birth?: true
     address?: true
-    detailAddress?: true
-    phoneNumber?: true
+    detail_address?: true
+    phone?: true
+    createAt?: true
+    modifiedAt?: true
     _all?: true
   }
 
@@ -1056,11 +1287,13 @@ export namespace Prisma {
     id: number
     email: string
     name: string
-    gender: string
+    sex: string
     birth: Date
     address: string
-    detailAddress: string | null
-    phoneNumber: string
+    detail_address: string | null
+    phone: string
+    createAt: Date | null
+    modifiedAt: Date | null
     _count: UserCountAggregateOutputType | null
     _avg: UserAvgAggregateOutputType | null
     _sum: UserSumAggregateOutputType | null
@@ -1086,60 +1319,54 @@ export namespace Prisma {
     id?: boolean
     email?: boolean
     name?: boolean
-    gender?: boolean
+    sex?: boolean
     birth?: boolean
     address?: boolean
-    detailAddress?: boolean
-    phoneNumber?: boolean
+    detail_address?: boolean
+    phone?: boolean
+    createAt?: boolean
+    modifiedAt?: boolean
+    userFavorCategories?: boolean | User$userFavorCategoriesArgs<ExtArgs>
+    _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
-  export type UserSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    email?: boolean
-    name?: boolean
-    gender?: boolean
-    birth?: boolean
-    address?: boolean
-    detailAddress?: boolean
-    phoneNumber?: boolean
-  }, ExtArgs["result"]["user"]>
 
-  export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    email?: boolean
-    name?: boolean
-    gender?: boolean
-    birth?: boolean
-    address?: boolean
-    detailAddress?: boolean
-    phoneNumber?: boolean
-  }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
     id?: boolean
     email?: boolean
     name?: boolean
-    gender?: boolean
+    sex?: boolean
     birth?: boolean
     address?: boolean
-    detailAddress?: boolean
-    phoneNumber?: boolean
+    detail_address?: boolean
+    phone?: boolean
+    createAt?: boolean
+    modifiedAt?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "name" | "gender" | "birth" | "address" | "detailAddress" | "phoneNumber", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "name" | "sex" | "birth" | "address" | "detail_address" | "phone" | "createAt" | "modifiedAt", ExtArgs["result"]["user"]>
+  export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    userFavorCategories?: boolean | User$userFavorCategoriesArgs<ExtArgs>
+    _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
+  }
 
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
-    objects: {}
+    objects: {
+      userFavorCategories: Prisma.$UserFavorCategoryPayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       email: string
       name: string
-      gender: string
+      sex: string
       birth: Date
       address: string
-      detailAddress: string | null
-      phoneNumber: string
+      detail_address: string | null
+      phone: string
+      createAt: Date | null
+      modifiedAt: Date | null
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -1258,30 +1485,6 @@ export namespace Prisma {
     createMany<T extends UserCreateManyArgs>(args?: SelectSubset<T, UserCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create many Users and returns the data saved in the database.
-     * @param {UserCreateManyAndReturnArgs} args - Arguments to create many Users.
-     * @example
-     * // Create many Users
-     * const user = await prisma.user.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many Users and only return the `id`
-     * const userWithIdOnly = await prisma.user.createManyAndReturn({
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends UserCreateManyAndReturnArgs>(args?: SelectSubset<T, UserCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
-
-    /**
      * Delete a User.
      * @param {UserDeleteArgs} args - Arguments to delete one User.
      * @example
@@ -1344,36 +1547,6 @@ export namespace Prisma {
      * 
      */
     updateMany<T extends UserUpdateManyArgs>(args: SelectSubset<T, UserUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Users and returns the data updated in the database.
-     * @param {UserUpdateManyAndReturnArgs} args - Arguments to update many Users.
-     * @example
-     * // Update many Users
-     * const user = await prisma.user.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more Users and only return the `id`
-     * const userWithIdOnly = await prisma.user.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends UserUpdateManyAndReturnArgs>(args: SelectSubset<T, UserUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
      * Create or update one User.
@@ -1534,6 +1707,7 @@ export namespace Prisma {
    */
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    userFavorCategories<T extends User$userFavorCategoriesArgs<ExtArgs> = {}>(args?: Subset<T, User$userFavorCategoriesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserFavorCategoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1566,11 +1740,13 @@ export namespace Prisma {
     readonly id: FieldRef<"User", 'Int'>
     readonly email: FieldRef<"User", 'String'>
     readonly name: FieldRef<"User", 'String'>
-    readonly gender: FieldRef<"User", 'String'>
+    readonly sex: FieldRef<"User", 'String'>
     readonly birth: FieldRef<"User", 'DateTime'>
     readonly address: FieldRef<"User", 'String'>
-    readonly detailAddress: FieldRef<"User", 'String'>
-    readonly phoneNumber: FieldRef<"User", 'String'>
+    readonly detail_address: FieldRef<"User", 'String'>
+    readonly phone: FieldRef<"User", 'String'>
+    readonly createAt: FieldRef<"User", 'DateTime'>
+    readonly modifiedAt: FieldRef<"User", 'DateTime'>
   }
     
 
@@ -1587,6 +1763,10 @@ export namespace Prisma {
      * Omit specific fields from the User
      */
     omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
     /**
      * Filter, which User to fetch.
      */
@@ -1606,6 +1786,10 @@ export namespace Prisma {
      */
     omit?: UserOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * Filter, which User to fetch.
      */
     where: UserWhereUniqueInput
@@ -1623,6 +1807,10 @@ export namespace Prisma {
      * Omit specific fields from the User
      */
     omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
     /**
      * Filter, which User to fetch.
      */
@@ -1672,6 +1860,10 @@ export namespace Prisma {
      */
     omit?: UserOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * Filter, which User to fetch.
      */
     where?: UserWhereInput
@@ -1720,6 +1912,10 @@ export namespace Prisma {
      */
     omit?: UserOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * Filter, which Users to fetch.
      */
     where?: UserWhereInput
@@ -1763,6 +1959,10 @@ export namespace Prisma {
      */
     omit?: UserOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * The data needed to create a User.
      */
     data: XOR<UserCreateInput, UserUncheckedCreateInput>
@@ -1772,25 +1972,6 @@ export namespace Prisma {
    * User createMany
    */
   export type UserCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many Users.
-     */
-    data: UserCreateManyInput | UserCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * User createManyAndReturn
-   */
-  export type UserCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the User
-     */
-    select?: UserSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the User
-     */
-    omit?: UserOmit<ExtArgs> | null
     /**
      * The data used to create many Users.
      */
@@ -1810,6 +1991,10 @@ export namespace Prisma {
      * Omit specific fields from the User
      */
     omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
     /**
      * The data needed to update a User.
      */
@@ -1839,32 +2024,6 @@ export namespace Prisma {
   }
 
   /**
-   * User updateManyAndReturn
-   */
-  export type UserUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the User
-     */
-    select?: UserSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the User
-     */
-    omit?: UserOmit<ExtArgs> | null
-    /**
-     * The data used to update Users.
-     */
-    data: XOR<UserUpdateManyMutationInput, UserUncheckedUpdateManyInput>
-    /**
-     * Filter which Users to update
-     */
-    where?: UserWhereInput
-    /**
-     * Limit how many Users to update.
-     */
-    limit?: number
-  }
-
-  /**
    * User upsert
    */
   export type UserUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -1876,6 +2035,10 @@ export namespace Prisma {
      * Omit specific fields from the User
      */
     omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
     /**
      * The filter to search for the User to update in case it exists.
      */
@@ -1903,6 +2066,10 @@ export namespace Prisma {
      */
     omit?: UserOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * Filter which User to delete.
      */
     where: UserWhereUniqueInput
@@ -1923,6 +2090,30 @@ export namespace Prisma {
   }
 
   /**
+   * User.userFavorCategories
+   */
+  export type User$userFavorCategoriesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserFavorCategory
+     */
+    select?: UserFavorCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserFavorCategory
+     */
+    omit?: UserFavorCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserFavorCategoryInclude<ExtArgs> | null
+    where?: UserFavorCategoryWhereInput
+    orderBy?: UserFavorCategoryOrderByWithRelationInput | UserFavorCategoryOrderByWithRelationInput[]
+    cursor?: UserFavorCategoryWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: UserFavorCategoryScalarFieldEnum | UserFavorCategoryScalarFieldEnum[]
+  }
+
+  /**
    * User without action
    */
   export type UserDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -1934,6 +2125,1982 @@ export namespace Prisma {
      * Omit specific fields from the User
      */
     omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model FoodCategory
+   */
+
+  export type AggregateFoodCategory = {
+    _count: FoodCategoryCountAggregateOutputType | null
+    _avg: FoodCategoryAvgAggregateOutputType | null
+    _sum: FoodCategorySumAggregateOutputType | null
+    _min: FoodCategoryMinAggregateOutputType | null
+    _max: FoodCategoryMaxAggregateOutputType | null
+  }
+
+  export type FoodCategoryAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type FoodCategorySumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type FoodCategoryMinAggregateOutputType = {
+    id: number | null
+    name: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type FoodCategoryMaxAggregateOutputType = {
+    id: number | null
+    name: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type FoodCategoryCountAggregateOutputType = {
+    id: number
+    name: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type FoodCategoryAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type FoodCategorySumAggregateInputType = {
+    id?: true
+  }
+
+  export type FoodCategoryMinAggregateInputType = {
+    id?: true
+    name?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type FoodCategoryMaxAggregateInputType = {
+    id?: true
+    name?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type FoodCategoryCountAggregateInputType = {
+    id?: true
+    name?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type FoodCategoryAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which FoodCategory to aggregate.
+     */
+    where?: FoodCategoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of FoodCategories to fetch.
+     */
+    orderBy?: FoodCategoryOrderByWithRelationInput | FoodCategoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: FoodCategoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` FoodCategories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` FoodCategories.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned FoodCategories
+    **/
+    _count?: true | FoodCategoryCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: FoodCategoryAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: FoodCategorySumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: FoodCategoryMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: FoodCategoryMaxAggregateInputType
+  }
+
+  export type GetFoodCategoryAggregateType<T extends FoodCategoryAggregateArgs> = {
+        [P in keyof T & keyof AggregateFoodCategory]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateFoodCategory[P]>
+      : GetScalarType<T[P], AggregateFoodCategory[P]>
+  }
+
+
+
+
+  export type FoodCategoryGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: FoodCategoryWhereInput
+    orderBy?: FoodCategoryOrderByWithAggregationInput | FoodCategoryOrderByWithAggregationInput[]
+    by: FoodCategoryScalarFieldEnum[] | FoodCategoryScalarFieldEnum
+    having?: FoodCategoryScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: FoodCategoryCountAggregateInputType | true
+    _avg?: FoodCategoryAvgAggregateInputType
+    _sum?: FoodCategorySumAggregateInputType
+    _min?: FoodCategoryMinAggregateInputType
+    _max?: FoodCategoryMaxAggregateInputType
+  }
+
+  export type FoodCategoryGroupByOutputType = {
+    id: number
+    name: string
+    createdAt: Date
+    updatedAt: Date
+    _count: FoodCategoryCountAggregateOutputType | null
+    _avg: FoodCategoryAvgAggregateOutputType | null
+    _sum: FoodCategorySumAggregateOutputType | null
+    _min: FoodCategoryMinAggregateOutputType | null
+    _max: FoodCategoryMaxAggregateOutputType | null
+  }
+
+  type GetFoodCategoryGroupByPayload<T extends FoodCategoryGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<FoodCategoryGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof FoodCategoryGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], FoodCategoryGroupByOutputType[P]>
+            : GetScalarType<T[P], FoodCategoryGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type FoodCategorySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    userFavorCategories?: boolean | FoodCategory$userFavorCategoriesArgs<ExtArgs>
+    _count?: boolean | FoodCategoryCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["foodCategory"]>
+
+
+
+  export type FoodCategorySelectScalar = {
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type FoodCategoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "createdAt" | "updatedAt", ExtArgs["result"]["foodCategory"]>
+  export type FoodCategoryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    userFavorCategories?: boolean | FoodCategory$userFavorCategoriesArgs<ExtArgs>
+    _count?: boolean | FoodCategoryCountOutputTypeDefaultArgs<ExtArgs>
+  }
+
+  export type $FoodCategoryPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "FoodCategory"
+    objects: {
+      userFavorCategories: Prisma.$UserFavorCategoryPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      name: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["foodCategory"]>
+    composites: {}
+  }
+
+  type FoodCategoryGetPayload<S extends boolean | null | undefined | FoodCategoryDefaultArgs> = $Result.GetResult<Prisma.$FoodCategoryPayload, S>
+
+  type FoodCategoryCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<FoodCategoryFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: FoodCategoryCountAggregateInputType | true
+    }
+
+  export interface FoodCategoryDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['FoodCategory'], meta: { name: 'FoodCategory' } }
+    /**
+     * Find zero or one FoodCategory that matches the filter.
+     * @param {FoodCategoryFindUniqueArgs} args - Arguments to find a FoodCategory
+     * @example
+     * // Get one FoodCategory
+     * const foodCategory = await prisma.foodCategory.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends FoodCategoryFindUniqueArgs>(args: SelectSubset<T, FoodCategoryFindUniqueArgs<ExtArgs>>): Prisma__FoodCategoryClient<$Result.GetResult<Prisma.$FoodCategoryPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one FoodCategory that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {FoodCategoryFindUniqueOrThrowArgs} args - Arguments to find a FoodCategory
+     * @example
+     * // Get one FoodCategory
+     * const foodCategory = await prisma.foodCategory.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends FoodCategoryFindUniqueOrThrowArgs>(args: SelectSubset<T, FoodCategoryFindUniqueOrThrowArgs<ExtArgs>>): Prisma__FoodCategoryClient<$Result.GetResult<Prisma.$FoodCategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first FoodCategory that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FoodCategoryFindFirstArgs} args - Arguments to find a FoodCategory
+     * @example
+     * // Get one FoodCategory
+     * const foodCategory = await prisma.foodCategory.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends FoodCategoryFindFirstArgs>(args?: SelectSubset<T, FoodCategoryFindFirstArgs<ExtArgs>>): Prisma__FoodCategoryClient<$Result.GetResult<Prisma.$FoodCategoryPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first FoodCategory that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FoodCategoryFindFirstOrThrowArgs} args - Arguments to find a FoodCategory
+     * @example
+     * // Get one FoodCategory
+     * const foodCategory = await prisma.foodCategory.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends FoodCategoryFindFirstOrThrowArgs>(args?: SelectSubset<T, FoodCategoryFindFirstOrThrowArgs<ExtArgs>>): Prisma__FoodCategoryClient<$Result.GetResult<Prisma.$FoodCategoryPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more FoodCategories that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FoodCategoryFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all FoodCategories
+     * const foodCategories = await prisma.foodCategory.findMany()
+     * 
+     * // Get first 10 FoodCategories
+     * const foodCategories = await prisma.foodCategory.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const foodCategoryWithIdOnly = await prisma.foodCategory.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends FoodCategoryFindManyArgs>(args?: SelectSubset<T, FoodCategoryFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FoodCategoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a FoodCategory.
+     * @param {FoodCategoryCreateArgs} args - Arguments to create a FoodCategory.
+     * @example
+     * // Create one FoodCategory
+     * const FoodCategory = await prisma.foodCategory.create({
+     *   data: {
+     *     // ... data to create a FoodCategory
+     *   }
+     * })
+     * 
+     */
+    create<T extends FoodCategoryCreateArgs>(args: SelectSubset<T, FoodCategoryCreateArgs<ExtArgs>>): Prisma__FoodCategoryClient<$Result.GetResult<Prisma.$FoodCategoryPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many FoodCategories.
+     * @param {FoodCategoryCreateManyArgs} args - Arguments to create many FoodCategories.
+     * @example
+     * // Create many FoodCategories
+     * const foodCategory = await prisma.foodCategory.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends FoodCategoryCreateManyArgs>(args?: SelectSubset<T, FoodCategoryCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a FoodCategory.
+     * @param {FoodCategoryDeleteArgs} args - Arguments to delete one FoodCategory.
+     * @example
+     * // Delete one FoodCategory
+     * const FoodCategory = await prisma.foodCategory.delete({
+     *   where: {
+     *     // ... filter to delete one FoodCategory
+     *   }
+     * })
+     * 
+     */
+    delete<T extends FoodCategoryDeleteArgs>(args: SelectSubset<T, FoodCategoryDeleteArgs<ExtArgs>>): Prisma__FoodCategoryClient<$Result.GetResult<Prisma.$FoodCategoryPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one FoodCategory.
+     * @param {FoodCategoryUpdateArgs} args - Arguments to update one FoodCategory.
+     * @example
+     * // Update one FoodCategory
+     * const foodCategory = await prisma.foodCategory.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends FoodCategoryUpdateArgs>(args: SelectSubset<T, FoodCategoryUpdateArgs<ExtArgs>>): Prisma__FoodCategoryClient<$Result.GetResult<Prisma.$FoodCategoryPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more FoodCategories.
+     * @param {FoodCategoryDeleteManyArgs} args - Arguments to filter FoodCategories to delete.
+     * @example
+     * // Delete a few FoodCategories
+     * const { count } = await prisma.foodCategory.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends FoodCategoryDeleteManyArgs>(args?: SelectSubset<T, FoodCategoryDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more FoodCategories.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FoodCategoryUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many FoodCategories
+     * const foodCategory = await prisma.foodCategory.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends FoodCategoryUpdateManyArgs>(args: SelectSubset<T, FoodCategoryUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one FoodCategory.
+     * @param {FoodCategoryUpsertArgs} args - Arguments to update or create a FoodCategory.
+     * @example
+     * // Update or create a FoodCategory
+     * const foodCategory = await prisma.foodCategory.upsert({
+     *   create: {
+     *     // ... data to create a FoodCategory
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the FoodCategory we want to update
+     *   }
+     * })
+     */
+    upsert<T extends FoodCategoryUpsertArgs>(args: SelectSubset<T, FoodCategoryUpsertArgs<ExtArgs>>): Prisma__FoodCategoryClient<$Result.GetResult<Prisma.$FoodCategoryPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of FoodCategories.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FoodCategoryCountArgs} args - Arguments to filter FoodCategories to count.
+     * @example
+     * // Count the number of FoodCategories
+     * const count = await prisma.foodCategory.count({
+     *   where: {
+     *     // ... the filter for the FoodCategories we want to count
+     *   }
+     * })
+    **/
+    count<T extends FoodCategoryCountArgs>(
+      args?: Subset<T, FoodCategoryCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], FoodCategoryCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a FoodCategory.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FoodCategoryAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends FoodCategoryAggregateArgs>(args: Subset<T, FoodCategoryAggregateArgs>): Prisma.PrismaPromise<GetFoodCategoryAggregateType<T>>
+
+    /**
+     * Group by FoodCategory.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FoodCategoryGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends FoodCategoryGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: FoodCategoryGroupByArgs['orderBy'] }
+        : { orderBy?: FoodCategoryGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, FoodCategoryGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetFoodCategoryGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the FoodCategory model
+   */
+  readonly fields: FoodCategoryFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for FoodCategory.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__FoodCategoryClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    userFavorCategories<T extends FoodCategory$userFavorCategoriesArgs<ExtArgs> = {}>(args?: Subset<T, FoodCategory$userFavorCategoriesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserFavorCategoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the FoodCategory model
+   */
+  interface FoodCategoryFieldRefs {
+    readonly id: FieldRef<"FoodCategory", 'Int'>
+    readonly name: FieldRef<"FoodCategory", 'String'>
+    readonly createdAt: FieldRef<"FoodCategory", 'DateTime'>
+    readonly updatedAt: FieldRef<"FoodCategory", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * FoodCategory findUnique
+   */
+  export type FoodCategoryFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FoodCategory
+     */
+    select?: FoodCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FoodCategory
+     */
+    omit?: FoodCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FoodCategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which FoodCategory to fetch.
+     */
+    where: FoodCategoryWhereUniqueInput
+  }
+
+  /**
+   * FoodCategory findUniqueOrThrow
+   */
+  export type FoodCategoryFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FoodCategory
+     */
+    select?: FoodCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FoodCategory
+     */
+    omit?: FoodCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FoodCategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which FoodCategory to fetch.
+     */
+    where: FoodCategoryWhereUniqueInput
+  }
+
+  /**
+   * FoodCategory findFirst
+   */
+  export type FoodCategoryFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FoodCategory
+     */
+    select?: FoodCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FoodCategory
+     */
+    omit?: FoodCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FoodCategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which FoodCategory to fetch.
+     */
+    where?: FoodCategoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of FoodCategories to fetch.
+     */
+    orderBy?: FoodCategoryOrderByWithRelationInput | FoodCategoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for FoodCategories.
+     */
+    cursor?: FoodCategoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` FoodCategories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` FoodCategories.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of FoodCategories.
+     */
+    distinct?: FoodCategoryScalarFieldEnum | FoodCategoryScalarFieldEnum[]
+  }
+
+  /**
+   * FoodCategory findFirstOrThrow
+   */
+  export type FoodCategoryFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FoodCategory
+     */
+    select?: FoodCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FoodCategory
+     */
+    omit?: FoodCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FoodCategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which FoodCategory to fetch.
+     */
+    where?: FoodCategoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of FoodCategories to fetch.
+     */
+    orderBy?: FoodCategoryOrderByWithRelationInput | FoodCategoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for FoodCategories.
+     */
+    cursor?: FoodCategoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` FoodCategories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` FoodCategories.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of FoodCategories.
+     */
+    distinct?: FoodCategoryScalarFieldEnum | FoodCategoryScalarFieldEnum[]
+  }
+
+  /**
+   * FoodCategory findMany
+   */
+  export type FoodCategoryFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FoodCategory
+     */
+    select?: FoodCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FoodCategory
+     */
+    omit?: FoodCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FoodCategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which FoodCategories to fetch.
+     */
+    where?: FoodCategoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of FoodCategories to fetch.
+     */
+    orderBy?: FoodCategoryOrderByWithRelationInput | FoodCategoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing FoodCategories.
+     */
+    cursor?: FoodCategoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` FoodCategories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` FoodCategories.
+     */
+    skip?: number
+    distinct?: FoodCategoryScalarFieldEnum | FoodCategoryScalarFieldEnum[]
+  }
+
+  /**
+   * FoodCategory create
+   */
+  export type FoodCategoryCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FoodCategory
+     */
+    select?: FoodCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FoodCategory
+     */
+    omit?: FoodCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FoodCategoryInclude<ExtArgs> | null
+    /**
+     * The data needed to create a FoodCategory.
+     */
+    data: XOR<FoodCategoryCreateInput, FoodCategoryUncheckedCreateInput>
+  }
+
+  /**
+   * FoodCategory createMany
+   */
+  export type FoodCategoryCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many FoodCategories.
+     */
+    data: FoodCategoryCreateManyInput | FoodCategoryCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * FoodCategory update
+   */
+  export type FoodCategoryUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FoodCategory
+     */
+    select?: FoodCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FoodCategory
+     */
+    omit?: FoodCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FoodCategoryInclude<ExtArgs> | null
+    /**
+     * The data needed to update a FoodCategory.
+     */
+    data: XOR<FoodCategoryUpdateInput, FoodCategoryUncheckedUpdateInput>
+    /**
+     * Choose, which FoodCategory to update.
+     */
+    where: FoodCategoryWhereUniqueInput
+  }
+
+  /**
+   * FoodCategory updateMany
+   */
+  export type FoodCategoryUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update FoodCategories.
+     */
+    data: XOR<FoodCategoryUpdateManyMutationInput, FoodCategoryUncheckedUpdateManyInput>
+    /**
+     * Filter which FoodCategories to update
+     */
+    where?: FoodCategoryWhereInput
+    /**
+     * Limit how many FoodCategories to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * FoodCategory upsert
+   */
+  export type FoodCategoryUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FoodCategory
+     */
+    select?: FoodCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FoodCategory
+     */
+    omit?: FoodCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FoodCategoryInclude<ExtArgs> | null
+    /**
+     * The filter to search for the FoodCategory to update in case it exists.
+     */
+    where: FoodCategoryWhereUniqueInput
+    /**
+     * In case the FoodCategory found by the `where` argument doesn't exist, create a new FoodCategory with this data.
+     */
+    create: XOR<FoodCategoryCreateInput, FoodCategoryUncheckedCreateInput>
+    /**
+     * In case the FoodCategory was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<FoodCategoryUpdateInput, FoodCategoryUncheckedUpdateInput>
+  }
+
+  /**
+   * FoodCategory delete
+   */
+  export type FoodCategoryDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FoodCategory
+     */
+    select?: FoodCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FoodCategory
+     */
+    omit?: FoodCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FoodCategoryInclude<ExtArgs> | null
+    /**
+     * Filter which FoodCategory to delete.
+     */
+    where: FoodCategoryWhereUniqueInput
+  }
+
+  /**
+   * FoodCategory deleteMany
+   */
+  export type FoodCategoryDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which FoodCategories to delete
+     */
+    where?: FoodCategoryWhereInput
+    /**
+     * Limit how many FoodCategories to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * FoodCategory.userFavorCategories
+   */
+  export type FoodCategory$userFavorCategoriesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserFavorCategory
+     */
+    select?: UserFavorCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserFavorCategory
+     */
+    omit?: UserFavorCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserFavorCategoryInclude<ExtArgs> | null
+    where?: UserFavorCategoryWhereInput
+    orderBy?: UserFavorCategoryOrderByWithRelationInput | UserFavorCategoryOrderByWithRelationInput[]
+    cursor?: UserFavorCategoryWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: UserFavorCategoryScalarFieldEnum | UserFavorCategoryScalarFieldEnum[]
+  }
+
+  /**
+   * FoodCategory without action
+   */
+  export type FoodCategoryDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FoodCategory
+     */
+    select?: FoodCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FoodCategory
+     */
+    omit?: FoodCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FoodCategoryInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model UserFavorCategory
+   */
+
+  export type AggregateUserFavorCategory = {
+    _count: UserFavorCategoryCountAggregateOutputType | null
+    _avg: UserFavorCategoryAvgAggregateOutputType | null
+    _sum: UserFavorCategorySumAggregateOutputType | null
+    _min: UserFavorCategoryMinAggregateOutputType | null
+    _max: UserFavorCategoryMaxAggregateOutputType | null
+  }
+
+  export type UserFavorCategoryAvgAggregateOutputType = {
+    id: number | null
+    userId: number | null
+    foodCategoryId: number | null
+  }
+
+  export type UserFavorCategorySumAggregateOutputType = {
+    id: number | null
+    userId: number | null
+    foodCategoryId: number | null
+  }
+
+  export type UserFavorCategoryMinAggregateOutputType = {
+    id: number | null
+    userId: number | null
+    foodCategoryId: number | null
+    createAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type UserFavorCategoryMaxAggregateOutputType = {
+    id: number | null
+    userId: number | null
+    foodCategoryId: number | null
+    createAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type UserFavorCategoryCountAggregateOutputType = {
+    id: number
+    userId: number
+    foodCategoryId: number
+    createAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type UserFavorCategoryAvgAggregateInputType = {
+    id?: true
+    userId?: true
+    foodCategoryId?: true
+  }
+
+  export type UserFavorCategorySumAggregateInputType = {
+    id?: true
+    userId?: true
+    foodCategoryId?: true
+  }
+
+  export type UserFavorCategoryMinAggregateInputType = {
+    id?: true
+    userId?: true
+    foodCategoryId?: true
+    createAt?: true
+    updatedAt?: true
+  }
+
+  export type UserFavorCategoryMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    foodCategoryId?: true
+    createAt?: true
+    updatedAt?: true
+  }
+
+  export type UserFavorCategoryCountAggregateInputType = {
+    id?: true
+    userId?: true
+    foodCategoryId?: true
+    createAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type UserFavorCategoryAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which UserFavorCategory to aggregate.
+     */
+    where?: UserFavorCategoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserFavorCategories to fetch.
+     */
+    orderBy?: UserFavorCategoryOrderByWithRelationInput | UserFavorCategoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: UserFavorCategoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserFavorCategories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserFavorCategories.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned UserFavorCategories
+    **/
+    _count?: true | UserFavorCategoryCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: UserFavorCategoryAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: UserFavorCategorySumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: UserFavorCategoryMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: UserFavorCategoryMaxAggregateInputType
+  }
+
+  export type GetUserFavorCategoryAggregateType<T extends UserFavorCategoryAggregateArgs> = {
+        [P in keyof T & keyof AggregateUserFavorCategory]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateUserFavorCategory[P]>
+      : GetScalarType<T[P], AggregateUserFavorCategory[P]>
+  }
+
+
+
+
+  export type UserFavorCategoryGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UserFavorCategoryWhereInput
+    orderBy?: UserFavorCategoryOrderByWithAggregationInput | UserFavorCategoryOrderByWithAggregationInput[]
+    by: UserFavorCategoryScalarFieldEnum[] | UserFavorCategoryScalarFieldEnum
+    having?: UserFavorCategoryScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: UserFavorCategoryCountAggregateInputType | true
+    _avg?: UserFavorCategoryAvgAggregateInputType
+    _sum?: UserFavorCategorySumAggregateInputType
+    _min?: UserFavorCategoryMinAggregateInputType
+    _max?: UserFavorCategoryMaxAggregateInputType
+  }
+
+  export type UserFavorCategoryGroupByOutputType = {
+    id: number
+    userId: number | null
+    foodCategoryId: number
+    createAt: Date | null
+    updatedAt: Date | null
+    _count: UserFavorCategoryCountAggregateOutputType | null
+    _avg: UserFavorCategoryAvgAggregateOutputType | null
+    _sum: UserFavorCategorySumAggregateOutputType | null
+    _min: UserFavorCategoryMinAggregateOutputType | null
+    _max: UserFavorCategoryMaxAggregateOutputType | null
+  }
+
+  type GetUserFavorCategoryGroupByPayload<T extends UserFavorCategoryGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<UserFavorCategoryGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof UserFavorCategoryGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], UserFavorCategoryGroupByOutputType[P]>
+            : GetScalarType<T[P], UserFavorCategoryGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type UserFavorCategorySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    foodCategoryId?: boolean
+    createAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserFavorCategory$userArgs<ExtArgs>
+    foodCategory?: boolean | FoodCategoryDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["userFavorCategory"]>
+
+
+
+  export type UserFavorCategorySelectScalar = {
+    id?: boolean
+    userId?: boolean
+    foodCategoryId?: boolean
+    createAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type UserFavorCategoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "foodCategoryId" | "createAt" | "updatedAt", ExtArgs["result"]["userFavorCategory"]>
+  export type UserFavorCategoryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserFavorCategory$userArgs<ExtArgs>
+    foodCategory?: boolean | FoodCategoryDefaultArgs<ExtArgs>
+  }
+
+  export type $UserFavorCategoryPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "UserFavorCategory"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs> | null
+      foodCategory: Prisma.$FoodCategoryPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      userId: number | null
+      foodCategoryId: number
+      createAt: Date | null
+      updatedAt: Date | null
+    }, ExtArgs["result"]["userFavorCategory"]>
+    composites: {}
+  }
+
+  type UserFavorCategoryGetPayload<S extends boolean | null | undefined | UserFavorCategoryDefaultArgs> = $Result.GetResult<Prisma.$UserFavorCategoryPayload, S>
+
+  type UserFavorCategoryCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<UserFavorCategoryFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: UserFavorCategoryCountAggregateInputType | true
+    }
+
+  export interface UserFavorCategoryDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['UserFavorCategory'], meta: { name: 'UserFavorCategory' } }
+    /**
+     * Find zero or one UserFavorCategory that matches the filter.
+     * @param {UserFavorCategoryFindUniqueArgs} args - Arguments to find a UserFavorCategory
+     * @example
+     * // Get one UserFavorCategory
+     * const userFavorCategory = await prisma.userFavorCategory.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends UserFavorCategoryFindUniqueArgs>(args: SelectSubset<T, UserFavorCategoryFindUniqueArgs<ExtArgs>>): Prisma__UserFavorCategoryClient<$Result.GetResult<Prisma.$UserFavorCategoryPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one UserFavorCategory that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {UserFavorCategoryFindUniqueOrThrowArgs} args - Arguments to find a UserFavorCategory
+     * @example
+     * // Get one UserFavorCategory
+     * const userFavorCategory = await prisma.userFavorCategory.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends UserFavorCategoryFindUniqueOrThrowArgs>(args: SelectSubset<T, UserFavorCategoryFindUniqueOrThrowArgs<ExtArgs>>): Prisma__UserFavorCategoryClient<$Result.GetResult<Prisma.$UserFavorCategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first UserFavorCategory that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserFavorCategoryFindFirstArgs} args - Arguments to find a UserFavorCategory
+     * @example
+     * // Get one UserFavorCategory
+     * const userFavorCategory = await prisma.userFavorCategory.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends UserFavorCategoryFindFirstArgs>(args?: SelectSubset<T, UserFavorCategoryFindFirstArgs<ExtArgs>>): Prisma__UserFavorCategoryClient<$Result.GetResult<Prisma.$UserFavorCategoryPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first UserFavorCategory that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserFavorCategoryFindFirstOrThrowArgs} args - Arguments to find a UserFavorCategory
+     * @example
+     * // Get one UserFavorCategory
+     * const userFavorCategory = await prisma.userFavorCategory.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends UserFavorCategoryFindFirstOrThrowArgs>(args?: SelectSubset<T, UserFavorCategoryFindFirstOrThrowArgs<ExtArgs>>): Prisma__UserFavorCategoryClient<$Result.GetResult<Prisma.$UserFavorCategoryPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more UserFavorCategories that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserFavorCategoryFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all UserFavorCategories
+     * const userFavorCategories = await prisma.userFavorCategory.findMany()
+     * 
+     * // Get first 10 UserFavorCategories
+     * const userFavorCategories = await prisma.userFavorCategory.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const userFavorCategoryWithIdOnly = await prisma.userFavorCategory.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends UserFavorCategoryFindManyArgs>(args?: SelectSubset<T, UserFavorCategoryFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserFavorCategoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a UserFavorCategory.
+     * @param {UserFavorCategoryCreateArgs} args - Arguments to create a UserFavorCategory.
+     * @example
+     * // Create one UserFavorCategory
+     * const UserFavorCategory = await prisma.userFavorCategory.create({
+     *   data: {
+     *     // ... data to create a UserFavorCategory
+     *   }
+     * })
+     * 
+     */
+    create<T extends UserFavorCategoryCreateArgs>(args: SelectSubset<T, UserFavorCategoryCreateArgs<ExtArgs>>): Prisma__UserFavorCategoryClient<$Result.GetResult<Prisma.$UserFavorCategoryPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many UserFavorCategories.
+     * @param {UserFavorCategoryCreateManyArgs} args - Arguments to create many UserFavorCategories.
+     * @example
+     * // Create many UserFavorCategories
+     * const userFavorCategory = await prisma.userFavorCategory.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends UserFavorCategoryCreateManyArgs>(args?: SelectSubset<T, UserFavorCategoryCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a UserFavorCategory.
+     * @param {UserFavorCategoryDeleteArgs} args - Arguments to delete one UserFavorCategory.
+     * @example
+     * // Delete one UserFavorCategory
+     * const UserFavorCategory = await prisma.userFavorCategory.delete({
+     *   where: {
+     *     // ... filter to delete one UserFavorCategory
+     *   }
+     * })
+     * 
+     */
+    delete<T extends UserFavorCategoryDeleteArgs>(args: SelectSubset<T, UserFavorCategoryDeleteArgs<ExtArgs>>): Prisma__UserFavorCategoryClient<$Result.GetResult<Prisma.$UserFavorCategoryPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one UserFavorCategory.
+     * @param {UserFavorCategoryUpdateArgs} args - Arguments to update one UserFavorCategory.
+     * @example
+     * // Update one UserFavorCategory
+     * const userFavorCategory = await prisma.userFavorCategory.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends UserFavorCategoryUpdateArgs>(args: SelectSubset<T, UserFavorCategoryUpdateArgs<ExtArgs>>): Prisma__UserFavorCategoryClient<$Result.GetResult<Prisma.$UserFavorCategoryPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more UserFavorCategories.
+     * @param {UserFavorCategoryDeleteManyArgs} args - Arguments to filter UserFavorCategories to delete.
+     * @example
+     * // Delete a few UserFavorCategories
+     * const { count } = await prisma.userFavorCategory.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends UserFavorCategoryDeleteManyArgs>(args?: SelectSubset<T, UserFavorCategoryDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more UserFavorCategories.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserFavorCategoryUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many UserFavorCategories
+     * const userFavorCategory = await prisma.userFavorCategory.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends UserFavorCategoryUpdateManyArgs>(args: SelectSubset<T, UserFavorCategoryUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one UserFavorCategory.
+     * @param {UserFavorCategoryUpsertArgs} args - Arguments to update or create a UserFavorCategory.
+     * @example
+     * // Update or create a UserFavorCategory
+     * const userFavorCategory = await prisma.userFavorCategory.upsert({
+     *   create: {
+     *     // ... data to create a UserFavorCategory
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the UserFavorCategory we want to update
+     *   }
+     * })
+     */
+    upsert<T extends UserFavorCategoryUpsertArgs>(args: SelectSubset<T, UserFavorCategoryUpsertArgs<ExtArgs>>): Prisma__UserFavorCategoryClient<$Result.GetResult<Prisma.$UserFavorCategoryPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of UserFavorCategories.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserFavorCategoryCountArgs} args - Arguments to filter UserFavorCategories to count.
+     * @example
+     * // Count the number of UserFavorCategories
+     * const count = await prisma.userFavorCategory.count({
+     *   where: {
+     *     // ... the filter for the UserFavorCategories we want to count
+     *   }
+     * })
+    **/
+    count<T extends UserFavorCategoryCountArgs>(
+      args?: Subset<T, UserFavorCategoryCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], UserFavorCategoryCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a UserFavorCategory.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserFavorCategoryAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends UserFavorCategoryAggregateArgs>(args: Subset<T, UserFavorCategoryAggregateArgs>): Prisma.PrismaPromise<GetUserFavorCategoryAggregateType<T>>
+
+    /**
+     * Group by UserFavorCategory.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserFavorCategoryGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends UserFavorCategoryGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: UserFavorCategoryGroupByArgs['orderBy'] }
+        : { orderBy?: UserFavorCategoryGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, UserFavorCategoryGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUserFavorCategoryGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the UserFavorCategory model
+   */
+  readonly fields: UserFavorCategoryFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for UserFavorCategory.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__UserFavorCategoryClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserFavorCategory$userArgs<ExtArgs> = {}>(args?: Subset<T, UserFavorCategory$userArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    foodCategory<T extends FoodCategoryDefaultArgs<ExtArgs> = {}>(args?: Subset<T, FoodCategoryDefaultArgs<ExtArgs>>): Prisma__FoodCategoryClient<$Result.GetResult<Prisma.$FoodCategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the UserFavorCategory model
+   */
+  interface UserFavorCategoryFieldRefs {
+    readonly id: FieldRef<"UserFavorCategory", 'Int'>
+    readonly userId: FieldRef<"UserFavorCategory", 'Int'>
+    readonly foodCategoryId: FieldRef<"UserFavorCategory", 'Int'>
+    readonly createAt: FieldRef<"UserFavorCategory", 'DateTime'>
+    readonly updatedAt: FieldRef<"UserFavorCategory", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * UserFavorCategory findUnique
+   */
+  export type UserFavorCategoryFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserFavorCategory
+     */
+    select?: UserFavorCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserFavorCategory
+     */
+    omit?: UserFavorCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserFavorCategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which UserFavorCategory to fetch.
+     */
+    where: UserFavorCategoryWhereUniqueInput
+  }
+
+  /**
+   * UserFavorCategory findUniqueOrThrow
+   */
+  export type UserFavorCategoryFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserFavorCategory
+     */
+    select?: UserFavorCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserFavorCategory
+     */
+    omit?: UserFavorCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserFavorCategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which UserFavorCategory to fetch.
+     */
+    where: UserFavorCategoryWhereUniqueInput
+  }
+
+  /**
+   * UserFavorCategory findFirst
+   */
+  export type UserFavorCategoryFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserFavorCategory
+     */
+    select?: UserFavorCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserFavorCategory
+     */
+    omit?: UserFavorCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserFavorCategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which UserFavorCategory to fetch.
+     */
+    where?: UserFavorCategoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserFavorCategories to fetch.
+     */
+    orderBy?: UserFavorCategoryOrderByWithRelationInput | UserFavorCategoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for UserFavorCategories.
+     */
+    cursor?: UserFavorCategoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserFavorCategories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserFavorCategories.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of UserFavorCategories.
+     */
+    distinct?: UserFavorCategoryScalarFieldEnum | UserFavorCategoryScalarFieldEnum[]
+  }
+
+  /**
+   * UserFavorCategory findFirstOrThrow
+   */
+  export type UserFavorCategoryFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserFavorCategory
+     */
+    select?: UserFavorCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserFavorCategory
+     */
+    omit?: UserFavorCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserFavorCategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which UserFavorCategory to fetch.
+     */
+    where?: UserFavorCategoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserFavorCategories to fetch.
+     */
+    orderBy?: UserFavorCategoryOrderByWithRelationInput | UserFavorCategoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for UserFavorCategories.
+     */
+    cursor?: UserFavorCategoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserFavorCategories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserFavorCategories.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of UserFavorCategories.
+     */
+    distinct?: UserFavorCategoryScalarFieldEnum | UserFavorCategoryScalarFieldEnum[]
+  }
+
+  /**
+   * UserFavorCategory findMany
+   */
+  export type UserFavorCategoryFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserFavorCategory
+     */
+    select?: UserFavorCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserFavorCategory
+     */
+    omit?: UserFavorCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserFavorCategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which UserFavorCategories to fetch.
+     */
+    where?: UserFavorCategoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserFavorCategories to fetch.
+     */
+    orderBy?: UserFavorCategoryOrderByWithRelationInput | UserFavorCategoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing UserFavorCategories.
+     */
+    cursor?: UserFavorCategoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserFavorCategories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserFavorCategories.
+     */
+    skip?: number
+    distinct?: UserFavorCategoryScalarFieldEnum | UserFavorCategoryScalarFieldEnum[]
+  }
+
+  /**
+   * UserFavorCategory create
+   */
+  export type UserFavorCategoryCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserFavorCategory
+     */
+    select?: UserFavorCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserFavorCategory
+     */
+    omit?: UserFavorCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserFavorCategoryInclude<ExtArgs> | null
+    /**
+     * The data needed to create a UserFavorCategory.
+     */
+    data: XOR<UserFavorCategoryCreateInput, UserFavorCategoryUncheckedCreateInput>
+  }
+
+  /**
+   * UserFavorCategory createMany
+   */
+  export type UserFavorCategoryCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many UserFavorCategories.
+     */
+    data: UserFavorCategoryCreateManyInput | UserFavorCategoryCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * UserFavorCategory update
+   */
+  export type UserFavorCategoryUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserFavorCategory
+     */
+    select?: UserFavorCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserFavorCategory
+     */
+    omit?: UserFavorCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserFavorCategoryInclude<ExtArgs> | null
+    /**
+     * The data needed to update a UserFavorCategory.
+     */
+    data: XOR<UserFavorCategoryUpdateInput, UserFavorCategoryUncheckedUpdateInput>
+    /**
+     * Choose, which UserFavorCategory to update.
+     */
+    where: UserFavorCategoryWhereUniqueInput
+  }
+
+  /**
+   * UserFavorCategory updateMany
+   */
+  export type UserFavorCategoryUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update UserFavorCategories.
+     */
+    data: XOR<UserFavorCategoryUpdateManyMutationInput, UserFavorCategoryUncheckedUpdateManyInput>
+    /**
+     * Filter which UserFavorCategories to update
+     */
+    where?: UserFavorCategoryWhereInput
+    /**
+     * Limit how many UserFavorCategories to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * UserFavorCategory upsert
+   */
+  export type UserFavorCategoryUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserFavorCategory
+     */
+    select?: UserFavorCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserFavorCategory
+     */
+    omit?: UserFavorCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserFavorCategoryInclude<ExtArgs> | null
+    /**
+     * The filter to search for the UserFavorCategory to update in case it exists.
+     */
+    where: UserFavorCategoryWhereUniqueInput
+    /**
+     * In case the UserFavorCategory found by the `where` argument doesn't exist, create a new UserFavorCategory with this data.
+     */
+    create: XOR<UserFavorCategoryCreateInput, UserFavorCategoryUncheckedCreateInput>
+    /**
+     * In case the UserFavorCategory was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<UserFavorCategoryUpdateInput, UserFavorCategoryUncheckedUpdateInput>
+  }
+
+  /**
+   * UserFavorCategory delete
+   */
+  export type UserFavorCategoryDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserFavorCategory
+     */
+    select?: UserFavorCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserFavorCategory
+     */
+    omit?: UserFavorCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserFavorCategoryInclude<ExtArgs> | null
+    /**
+     * Filter which UserFavorCategory to delete.
+     */
+    where: UserFavorCategoryWhereUniqueInput
+  }
+
+  /**
+   * UserFavorCategory deleteMany
+   */
+  export type UserFavorCategoryDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which UserFavorCategories to delete
+     */
+    where?: UserFavorCategoryWhereInput
+    /**
+     * Limit how many UserFavorCategories to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * UserFavorCategory.user
+   */
+  export type UserFavorCategory$userArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    where?: UserWhereInput
+  }
+
+  /**
+   * UserFavorCategory without action
+   */
+  export type UserFavorCategoryDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserFavorCategory
+     */
+    select?: UserFavorCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserFavorCategory
+     */
+    omit?: UserFavorCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserFavorCategoryInclude<ExtArgs> | null
   }
 
 
@@ -1955,14 +4122,37 @@ export namespace Prisma {
     id: 'id',
     email: 'email',
     name: 'name',
-    gender: 'gender',
+    sex: 'sex',
     birth: 'birth',
     address: 'address',
-    detailAddress: 'detailAddress',
-    phoneNumber: 'phoneNumber'
+    detail_address: 'detail_address',
+    phone: 'phone',
+    createAt: 'createAt',
+    modifiedAt: 'modifiedAt'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
+
+
+  export const FoodCategoryScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type FoodCategoryScalarFieldEnum = (typeof FoodCategoryScalarFieldEnum)[keyof typeof FoodCategoryScalarFieldEnum]
+
+
+  export const UserFavorCategoryScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    foodCategoryId: 'foodCategoryId',
+    createAt: 'createAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type UserFavorCategoryScalarFieldEnum = (typeof UserFavorCategoryScalarFieldEnum)[keyof typeof UserFavorCategoryScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -1973,20 +4163,31 @@ export namespace Prisma {
   export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
 
 
-  export const QueryMode: {
-    default: 'default',
-    insensitive: 'insensitive'
-  };
-
-  export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
-
-
   export const NullsOrder: {
     first: 'first',
     last: 'last'
   };
 
   export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
+  export const UserOrderByRelevanceFieldEnum: {
+    email: 'email',
+    name: 'name',
+    sex: 'sex',
+    address: 'address',
+    detail_address: 'detail_address',
+    phone: 'phone'
+  };
+
+  export type UserOrderByRelevanceFieldEnum = (typeof UserOrderByRelevanceFieldEnum)[keyof typeof UserOrderByRelevanceFieldEnum]
+
+
+  export const FoodCategoryOrderByRelevanceFieldEnum: {
+    name: 'name'
+  };
+
+  export type FoodCategoryOrderByRelevanceFieldEnum = (typeof FoodCategoryOrderByRelevanceFieldEnum)[keyof typeof FoodCategoryOrderByRelevanceFieldEnum]
 
 
   /**
@@ -2002,23 +4203,9 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Int[]'
-   */
-  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
-    
-
-
-  /**
    * Reference to a field of type 'String'
    */
   export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String'>
-    
-
-
-  /**
-   * Reference to a field of type 'String[]'
-   */
-  export type ListStringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String[]'>
     
 
 
@@ -2030,23 +4217,9 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'DateTime[]'
-   */
-  export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
-    
-
-
-  /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
-    
-
-
-  /**
-   * Reference to a field of type 'Float[]'
-   */
-  export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
     
   /**
    * Deep Input Types
@@ -2060,47 +4233,59 @@ export namespace Prisma {
     id?: IntFilter<"User"> | number
     email?: StringFilter<"User"> | string
     name?: StringFilter<"User"> | string
-    gender?: StringFilter<"User"> | string
+    sex?: StringFilter<"User"> | string
     birth?: DateTimeFilter<"User"> | Date | string
     address?: StringFilter<"User"> | string
-    detailAddress?: StringNullableFilter<"User"> | string | null
-    phoneNumber?: StringFilter<"User"> | string
+    detail_address?: StringNullableFilter<"User"> | string | null
+    phone?: StringFilter<"User"> | string
+    createAt?: DateTimeNullableFilter<"User"> | Date | string | null
+    modifiedAt?: DateTimeNullableFilter<"User"> | Date | string | null
+    userFavorCategories?: UserFavorCategoryListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
     id?: SortOrder
     email?: SortOrder
     name?: SortOrder
-    gender?: SortOrder
+    sex?: SortOrder
     birth?: SortOrder
     address?: SortOrder
-    detailAddress?: SortOrderInput | SortOrder
-    phoneNumber?: SortOrder
+    detail_address?: SortOrderInput | SortOrder
+    phone?: SortOrder
+    createAt?: SortOrderInput | SortOrder
+    modifiedAt?: SortOrderInput | SortOrder
+    userFavorCategories?: UserFavorCategoryOrderByRelationAggregateInput
+    _relevance?: UserOrderByRelevanceInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
     id?: number
-    email?: string
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
+    email?: StringFilter<"User"> | string
     name?: StringFilter<"User"> | string
-    gender?: StringFilter<"User"> | string
+    sex?: StringFilter<"User"> | string
     birth?: DateTimeFilter<"User"> | Date | string
     address?: StringFilter<"User"> | string
-    detailAddress?: StringNullableFilter<"User"> | string | null
-    phoneNumber?: StringFilter<"User"> | string
-  }, "id" | "email">
+    detail_address?: StringNullableFilter<"User"> | string | null
+    phone?: StringFilter<"User"> | string
+    createAt?: DateTimeNullableFilter<"User"> | Date | string | null
+    modifiedAt?: DateTimeNullableFilter<"User"> | Date | string | null
+    userFavorCategories?: UserFavorCategoryListRelationFilter
+  }, "id">
 
   export type UserOrderByWithAggregationInput = {
     id?: SortOrder
     email?: SortOrder
     name?: SortOrder
-    gender?: SortOrder
+    sex?: SortOrder
     birth?: SortOrder
     address?: SortOrder
-    detailAddress?: SortOrderInput | SortOrder
-    phoneNumber?: SortOrder
+    detail_address?: SortOrderInput | SortOrder
+    phone?: SortOrder
+    createAt?: SortOrderInput | SortOrder
+    modifiedAt?: SortOrderInput | SortOrder
     _count?: UserCountOrderByAggregateInput
     _avg?: UserAvgOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
@@ -2115,91 +4300,325 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"User"> | number
     email?: StringWithAggregatesFilter<"User"> | string
     name?: StringWithAggregatesFilter<"User"> | string
-    gender?: StringWithAggregatesFilter<"User"> | string
+    sex?: StringWithAggregatesFilter<"User"> | string
     birth?: DateTimeWithAggregatesFilter<"User"> | Date | string
     address?: StringWithAggregatesFilter<"User"> | string
-    detailAddress?: StringNullableWithAggregatesFilter<"User"> | string | null
-    phoneNumber?: StringWithAggregatesFilter<"User"> | string
+    detail_address?: StringNullableWithAggregatesFilter<"User"> | string | null
+    phone?: StringWithAggregatesFilter<"User"> | string
+    createAt?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
+    modifiedAt?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
+  }
+
+  export type FoodCategoryWhereInput = {
+    AND?: FoodCategoryWhereInput | FoodCategoryWhereInput[]
+    OR?: FoodCategoryWhereInput[]
+    NOT?: FoodCategoryWhereInput | FoodCategoryWhereInput[]
+    id?: IntFilter<"FoodCategory"> | number
+    name?: StringFilter<"FoodCategory"> | string
+    createdAt?: DateTimeFilter<"FoodCategory"> | Date | string
+    updatedAt?: DateTimeFilter<"FoodCategory"> | Date | string
+    userFavorCategories?: UserFavorCategoryListRelationFilter
+  }
+
+  export type FoodCategoryOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    userFavorCategories?: UserFavorCategoryOrderByRelationAggregateInput
+    _relevance?: FoodCategoryOrderByRelevanceInput
+  }
+
+  export type FoodCategoryWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: FoodCategoryWhereInput | FoodCategoryWhereInput[]
+    OR?: FoodCategoryWhereInput[]
+    NOT?: FoodCategoryWhereInput | FoodCategoryWhereInput[]
+    name?: StringFilter<"FoodCategory"> | string
+    createdAt?: DateTimeFilter<"FoodCategory"> | Date | string
+    updatedAt?: DateTimeFilter<"FoodCategory"> | Date | string
+    userFavorCategories?: UserFavorCategoryListRelationFilter
+  }, "id">
+
+  export type FoodCategoryOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: FoodCategoryCountOrderByAggregateInput
+    _avg?: FoodCategoryAvgOrderByAggregateInput
+    _max?: FoodCategoryMaxOrderByAggregateInput
+    _min?: FoodCategoryMinOrderByAggregateInput
+    _sum?: FoodCategorySumOrderByAggregateInput
+  }
+
+  export type FoodCategoryScalarWhereWithAggregatesInput = {
+    AND?: FoodCategoryScalarWhereWithAggregatesInput | FoodCategoryScalarWhereWithAggregatesInput[]
+    OR?: FoodCategoryScalarWhereWithAggregatesInput[]
+    NOT?: FoodCategoryScalarWhereWithAggregatesInput | FoodCategoryScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"FoodCategory"> | number
+    name?: StringWithAggregatesFilter<"FoodCategory"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"FoodCategory"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"FoodCategory"> | Date | string
+  }
+
+  export type UserFavorCategoryWhereInput = {
+    AND?: UserFavorCategoryWhereInput | UserFavorCategoryWhereInput[]
+    OR?: UserFavorCategoryWhereInput[]
+    NOT?: UserFavorCategoryWhereInput | UserFavorCategoryWhereInput[]
+    id?: IntFilter<"UserFavorCategory"> | number
+    userId?: IntNullableFilter<"UserFavorCategory"> | number | null
+    foodCategoryId?: IntFilter<"UserFavorCategory"> | number
+    createAt?: DateTimeNullableFilter<"UserFavorCategory"> | Date | string | null
+    updatedAt?: DateTimeNullableFilter<"UserFavorCategory"> | Date | string | null
+    user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+    foodCategory?: XOR<FoodCategoryScalarRelationFilter, FoodCategoryWhereInput>
+  }
+
+  export type UserFavorCategoryOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrderInput | SortOrder
+    foodCategoryId?: SortOrder
+    createAt?: SortOrderInput | SortOrder
+    updatedAt?: SortOrderInput | SortOrder
+    user?: UserOrderByWithRelationInput
+    foodCategory?: FoodCategoryOrderByWithRelationInput
+  }
+
+  export type UserFavorCategoryWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: UserFavorCategoryWhereInput | UserFavorCategoryWhereInput[]
+    OR?: UserFavorCategoryWhereInput[]
+    NOT?: UserFavorCategoryWhereInput | UserFavorCategoryWhereInput[]
+    userId?: IntNullableFilter<"UserFavorCategory"> | number | null
+    foodCategoryId?: IntFilter<"UserFavorCategory"> | number
+    createAt?: DateTimeNullableFilter<"UserFavorCategory"> | Date | string | null
+    updatedAt?: DateTimeNullableFilter<"UserFavorCategory"> | Date | string | null
+    user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+    foodCategory?: XOR<FoodCategoryScalarRelationFilter, FoodCategoryWhereInput>
+  }, "id">
+
+  export type UserFavorCategoryOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrderInput | SortOrder
+    foodCategoryId?: SortOrder
+    createAt?: SortOrderInput | SortOrder
+    updatedAt?: SortOrderInput | SortOrder
+    _count?: UserFavorCategoryCountOrderByAggregateInput
+    _avg?: UserFavorCategoryAvgOrderByAggregateInput
+    _max?: UserFavorCategoryMaxOrderByAggregateInput
+    _min?: UserFavorCategoryMinOrderByAggregateInput
+    _sum?: UserFavorCategorySumOrderByAggregateInput
+  }
+
+  export type UserFavorCategoryScalarWhereWithAggregatesInput = {
+    AND?: UserFavorCategoryScalarWhereWithAggregatesInput | UserFavorCategoryScalarWhereWithAggregatesInput[]
+    OR?: UserFavorCategoryScalarWhereWithAggregatesInput[]
+    NOT?: UserFavorCategoryScalarWhereWithAggregatesInput | UserFavorCategoryScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"UserFavorCategory"> | number
+    userId?: IntNullableWithAggregatesFilter<"UserFavorCategory"> | number | null
+    foodCategoryId?: IntWithAggregatesFilter<"UserFavorCategory"> | number
+    createAt?: DateTimeNullableWithAggregatesFilter<"UserFavorCategory"> | Date | string | null
+    updatedAt?: DateTimeNullableWithAggregatesFilter<"UserFavorCategory"> | Date | string | null
   }
 
   export type UserCreateInput = {
     email: string
     name: string
-    gender: string
+    sex: string
     birth: Date | string
     address: string
-    detailAddress?: string | null
-    phoneNumber: string
+    detail_address?: string | null
+    phone: string
+    createAt?: Date | string | null
+    modifiedAt?: Date | string | null
+    userFavorCategories?: UserFavorCategoryCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
     id?: number
     email: string
     name: string
-    gender: string
+    sex: string
     birth: Date | string
     address: string
-    detailAddress?: string | null
-    phoneNumber: string
+    detail_address?: string | null
+    phone: string
+    createAt?: Date | string | null
+    modifiedAt?: Date | string | null
+    userFavorCategories?: UserFavorCategoryUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    gender?: StringFieldUpdateOperationsInput | string
+    sex?: StringFieldUpdateOperationsInput | string
     birth?: DateTimeFieldUpdateOperationsInput | Date | string
     address?: StringFieldUpdateOperationsInput | string
-    detailAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    phoneNumber?: StringFieldUpdateOperationsInput | string
+    detail_address?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: StringFieldUpdateOperationsInput | string
+    createAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    modifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    userFavorCategories?: UserFavorCategoryUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    gender?: StringFieldUpdateOperationsInput | string
+    sex?: StringFieldUpdateOperationsInput | string
     birth?: DateTimeFieldUpdateOperationsInput | Date | string
     address?: StringFieldUpdateOperationsInput | string
-    detailAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    phoneNumber?: StringFieldUpdateOperationsInput | string
+    detail_address?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: StringFieldUpdateOperationsInput | string
+    createAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    modifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    userFavorCategories?: UserFavorCategoryUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
     id?: number
     email: string
     name: string
-    gender: string
+    sex: string
     birth: Date | string
     address: string
-    detailAddress?: string | null
-    phoneNumber: string
+    detail_address?: string | null
+    phone: string
+    createAt?: Date | string | null
+    modifiedAt?: Date | string | null
   }
 
   export type UserUpdateManyMutationInput = {
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    gender?: StringFieldUpdateOperationsInput | string
+    sex?: StringFieldUpdateOperationsInput | string
     birth?: DateTimeFieldUpdateOperationsInput | Date | string
     address?: StringFieldUpdateOperationsInput | string
-    detailAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    phoneNumber?: StringFieldUpdateOperationsInput | string
+    detail_address?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: StringFieldUpdateOperationsInput | string
+    createAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    modifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type UserUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    gender?: StringFieldUpdateOperationsInput | string
+    sex?: StringFieldUpdateOperationsInput | string
     birth?: DateTimeFieldUpdateOperationsInput | Date | string
     address?: StringFieldUpdateOperationsInput | string
-    detailAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    phoneNumber?: StringFieldUpdateOperationsInput | string
+    detail_address?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: StringFieldUpdateOperationsInput | string
+    createAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    modifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type FoodCategoryCreateInput = {
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    userFavorCategories?: UserFavorCategoryCreateNestedManyWithoutFoodCategoryInput
+  }
+
+  export type FoodCategoryUncheckedCreateInput = {
+    id?: number
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    userFavorCategories?: UserFavorCategoryUncheckedCreateNestedManyWithoutFoodCategoryInput
+  }
+
+  export type FoodCategoryUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userFavorCategories?: UserFavorCategoryUpdateManyWithoutFoodCategoryNestedInput
+  }
+
+  export type FoodCategoryUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userFavorCategories?: UserFavorCategoryUncheckedUpdateManyWithoutFoodCategoryNestedInput
+  }
+
+  export type FoodCategoryCreateManyInput = {
+    id?: number
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type FoodCategoryUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FoodCategoryUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserFavorCategoryCreateInput = {
+    createAt?: Date | string | null
+    updatedAt?: Date | string | null
+    user?: UserCreateNestedOneWithoutUserFavorCategoriesInput
+    foodCategory: FoodCategoryCreateNestedOneWithoutUserFavorCategoriesInput
+  }
+
+  export type UserFavorCategoryUncheckedCreateInput = {
+    id?: number
+    userId?: number | null
+    foodCategoryId: number
+    createAt?: Date | string | null
+    updatedAt?: Date | string | null
+  }
+
+  export type UserFavorCategoryUpdateInput = {
+    createAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    user?: UserUpdateOneWithoutUserFavorCategoriesNestedInput
+    foodCategory?: FoodCategoryUpdateOneRequiredWithoutUserFavorCategoriesNestedInput
+  }
+
+  export type UserFavorCategoryUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: NullableIntFieldUpdateOperationsInput | number | null
+    foodCategoryId?: IntFieldUpdateOperationsInput | number
+    createAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type UserFavorCategoryCreateManyInput = {
+    id?: number
+    userId?: number | null
+    foodCategoryId: number
+    createAt?: Date | string | null
+    updatedAt?: Date | string | null
+  }
+
+  export type UserFavorCategoryUpdateManyMutationInput = {
+    createAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type UserFavorCategoryUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: NullableIntFieldUpdateOperationsInput | number | null
+    foodCategoryId?: IntFieldUpdateOperationsInput | number
+    createAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type IntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
     lt?: number | IntFieldRefInput<$PrismaModel>
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
@@ -2209,8 +4628,8 @@ export namespace Prisma {
 
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[] | ListStringFieldRefInput<$PrismaModel>
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    in?: string[]
+    notIn?: string[]
     lt?: string | StringFieldRefInput<$PrismaModel>
     lte?: string | StringFieldRefInput<$PrismaModel>
     gt?: string | StringFieldRefInput<$PrismaModel>
@@ -2218,14 +4637,14 @@ export namespace Prisma {
     contains?: string | StringFieldRefInput<$PrismaModel>
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
+    search?: string
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
   export type DateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[]
+    notIn?: Date[] | string[]
     lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
@@ -2235,8 +4654,8 @@ export namespace Prisma {
 
   export type StringNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    in?: string[] | null
+    notIn?: string[] | null
     lt?: string | StringFieldRefInput<$PrismaModel>
     lte?: string | StringFieldRefInput<$PrismaModel>
     gt?: string | StringFieldRefInput<$PrismaModel>
@@ -2244,8 +4663,25 @@ export namespace Prisma {
     contains?: string | StringFieldRefInput<$PrismaModel>
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
+    search?: string
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type DateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | null
+    notIn?: Date[] | string[] | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
+  export type UserFavorCategoryListRelationFilter = {
+    every?: UserFavorCategoryWhereInput
+    some?: UserFavorCategoryWhereInput
+    none?: UserFavorCategoryWhereInput
   }
 
   export type SortOrderInput = {
@@ -2253,15 +4689,27 @@ export namespace Prisma {
     nulls?: NullsOrder
   }
 
+  export type UserFavorCategoryOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type UserOrderByRelevanceInput = {
+    fields: UserOrderByRelevanceFieldEnum | UserOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
   export type UserCountOrderByAggregateInput = {
     id?: SortOrder
     email?: SortOrder
     name?: SortOrder
-    gender?: SortOrder
+    sex?: SortOrder
     birth?: SortOrder
     address?: SortOrder
-    detailAddress?: SortOrder
-    phoneNumber?: SortOrder
+    detail_address?: SortOrder
+    phone?: SortOrder
+    createAt?: SortOrder
+    modifiedAt?: SortOrder
   }
 
   export type UserAvgOrderByAggregateInput = {
@@ -2272,22 +4720,26 @@ export namespace Prisma {
     id?: SortOrder
     email?: SortOrder
     name?: SortOrder
-    gender?: SortOrder
+    sex?: SortOrder
     birth?: SortOrder
     address?: SortOrder
-    detailAddress?: SortOrder
-    phoneNumber?: SortOrder
+    detail_address?: SortOrder
+    phone?: SortOrder
+    createAt?: SortOrder
+    modifiedAt?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
     id?: SortOrder
     email?: SortOrder
     name?: SortOrder
-    gender?: SortOrder
+    sex?: SortOrder
     birth?: SortOrder
     address?: SortOrder
-    detailAddress?: SortOrder
-    phoneNumber?: SortOrder
+    detail_address?: SortOrder
+    phone?: SortOrder
+    createAt?: SortOrder
+    modifiedAt?: SortOrder
   }
 
   export type UserSumOrderByAggregateInput = {
@@ -2296,8 +4748,8 @@ export namespace Prisma {
 
   export type IntWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
     lt?: number | IntFieldRefInput<$PrismaModel>
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
@@ -2312,8 +4764,8 @@ export namespace Prisma {
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[] | ListStringFieldRefInput<$PrismaModel>
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    in?: string[]
+    notIn?: string[]
     lt?: string | StringFieldRefInput<$PrismaModel>
     lte?: string | StringFieldRefInput<$PrismaModel>
     gt?: string | StringFieldRefInput<$PrismaModel>
@@ -2321,7 +4773,7 @@ export namespace Prisma {
     contains?: string | StringFieldRefInput<$PrismaModel>
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
+    search?: string
     not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedStringFilter<$PrismaModel>
@@ -2330,8 +4782,8 @@ export namespace Prisma {
 
   export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[]
+    notIn?: Date[] | string[]
     lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
@@ -2344,8 +4796,8 @@ export namespace Prisma {
 
   export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    in?: string[] | null
+    notIn?: string[] | null
     lt?: string | StringFieldRefInput<$PrismaModel>
     lte?: string | StringFieldRefInput<$PrismaModel>
     gt?: string | StringFieldRefInput<$PrismaModel>
@@ -2353,11 +4805,147 @@ export namespace Prisma {
     contains?: string | StringFieldRefInput<$PrismaModel>
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
+    search?: string
     not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedStringNullableFilter<$PrismaModel>
     _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | null
+    notIn?: Date[] | string[] | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
+  export type FoodCategoryOrderByRelevanceInput = {
+    fields: FoodCategoryOrderByRelevanceFieldEnum | FoodCategoryOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type FoodCategoryCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type FoodCategoryAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type FoodCategoryMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type FoodCategoryMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type FoodCategorySumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type UserNullableScalarRelationFilter = {
+    is?: UserWhereInput | null
+    isNot?: UserWhereInput | null
+  }
+
+  export type FoodCategoryScalarRelationFilter = {
+    is?: FoodCategoryWhereInput
+    isNot?: FoodCategoryWhereInput
+  }
+
+  export type UserFavorCategoryCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    foodCategoryId?: SortOrder
+    createAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type UserFavorCategoryAvgOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    foodCategoryId?: SortOrder
+  }
+
+  export type UserFavorCategoryMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    foodCategoryId?: SortOrder
+    createAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type UserFavorCategoryMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    foodCategoryId?: SortOrder
+    createAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type UserFavorCategorySumOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    foodCategoryId?: SortOrder
+  }
+
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type UserFavorCategoryCreateNestedManyWithoutUserInput = {
+    create?: XOR<UserFavorCategoryCreateWithoutUserInput, UserFavorCategoryUncheckedCreateWithoutUserInput> | UserFavorCategoryCreateWithoutUserInput[] | UserFavorCategoryUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: UserFavorCategoryCreateOrConnectWithoutUserInput | UserFavorCategoryCreateOrConnectWithoutUserInput[]
+    createMany?: UserFavorCategoryCreateManyUserInputEnvelope
+    connect?: UserFavorCategoryWhereUniqueInput | UserFavorCategoryWhereUniqueInput[]
+  }
+
+  export type UserFavorCategoryUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<UserFavorCategoryCreateWithoutUserInput, UserFavorCategoryUncheckedCreateWithoutUserInput> | UserFavorCategoryCreateWithoutUserInput[] | UserFavorCategoryUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: UserFavorCategoryCreateOrConnectWithoutUserInput | UserFavorCategoryCreateOrConnectWithoutUserInput[]
+    createMany?: UserFavorCategoryCreateManyUserInputEnvelope
+    connect?: UserFavorCategoryWhereUniqueInput | UserFavorCategoryWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -2372,6 +4960,24 @@ export namespace Prisma {
     set?: string | null
   }
 
+  export type NullableDateTimeFieldUpdateOperationsInput = {
+    set?: Date | string | null
+  }
+
+  export type UserFavorCategoryUpdateManyWithoutUserNestedInput = {
+    create?: XOR<UserFavorCategoryCreateWithoutUserInput, UserFavorCategoryUncheckedCreateWithoutUserInput> | UserFavorCategoryCreateWithoutUserInput[] | UserFavorCategoryUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: UserFavorCategoryCreateOrConnectWithoutUserInput | UserFavorCategoryCreateOrConnectWithoutUserInput[]
+    upsert?: UserFavorCategoryUpsertWithWhereUniqueWithoutUserInput | UserFavorCategoryUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: UserFavorCategoryCreateManyUserInputEnvelope
+    set?: UserFavorCategoryWhereUniqueInput | UserFavorCategoryWhereUniqueInput[]
+    disconnect?: UserFavorCategoryWhereUniqueInput | UserFavorCategoryWhereUniqueInput[]
+    delete?: UserFavorCategoryWhereUniqueInput | UserFavorCategoryWhereUniqueInput[]
+    connect?: UserFavorCategoryWhereUniqueInput | UserFavorCategoryWhereUniqueInput[]
+    update?: UserFavorCategoryUpdateWithWhereUniqueWithoutUserInput | UserFavorCategoryUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: UserFavorCategoryUpdateManyWithWhereWithoutUserInput | UserFavorCategoryUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: UserFavorCategoryScalarWhereInput | UserFavorCategoryScalarWhereInput[]
+  }
+
   export type IntFieldUpdateOperationsInput = {
     set?: number
     increment?: number
@@ -2380,10 +4986,104 @@ export namespace Prisma {
     divide?: number
   }
 
+  export type UserFavorCategoryUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<UserFavorCategoryCreateWithoutUserInput, UserFavorCategoryUncheckedCreateWithoutUserInput> | UserFavorCategoryCreateWithoutUserInput[] | UserFavorCategoryUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: UserFavorCategoryCreateOrConnectWithoutUserInput | UserFavorCategoryCreateOrConnectWithoutUserInput[]
+    upsert?: UserFavorCategoryUpsertWithWhereUniqueWithoutUserInput | UserFavorCategoryUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: UserFavorCategoryCreateManyUserInputEnvelope
+    set?: UserFavorCategoryWhereUniqueInput | UserFavorCategoryWhereUniqueInput[]
+    disconnect?: UserFavorCategoryWhereUniqueInput | UserFavorCategoryWhereUniqueInput[]
+    delete?: UserFavorCategoryWhereUniqueInput | UserFavorCategoryWhereUniqueInput[]
+    connect?: UserFavorCategoryWhereUniqueInput | UserFavorCategoryWhereUniqueInput[]
+    update?: UserFavorCategoryUpdateWithWhereUniqueWithoutUserInput | UserFavorCategoryUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: UserFavorCategoryUpdateManyWithWhereWithoutUserInput | UserFavorCategoryUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: UserFavorCategoryScalarWhereInput | UserFavorCategoryScalarWhereInput[]
+  }
+
+  export type UserFavorCategoryCreateNestedManyWithoutFoodCategoryInput = {
+    create?: XOR<UserFavorCategoryCreateWithoutFoodCategoryInput, UserFavorCategoryUncheckedCreateWithoutFoodCategoryInput> | UserFavorCategoryCreateWithoutFoodCategoryInput[] | UserFavorCategoryUncheckedCreateWithoutFoodCategoryInput[]
+    connectOrCreate?: UserFavorCategoryCreateOrConnectWithoutFoodCategoryInput | UserFavorCategoryCreateOrConnectWithoutFoodCategoryInput[]
+    createMany?: UserFavorCategoryCreateManyFoodCategoryInputEnvelope
+    connect?: UserFavorCategoryWhereUniqueInput | UserFavorCategoryWhereUniqueInput[]
+  }
+
+  export type UserFavorCategoryUncheckedCreateNestedManyWithoutFoodCategoryInput = {
+    create?: XOR<UserFavorCategoryCreateWithoutFoodCategoryInput, UserFavorCategoryUncheckedCreateWithoutFoodCategoryInput> | UserFavorCategoryCreateWithoutFoodCategoryInput[] | UserFavorCategoryUncheckedCreateWithoutFoodCategoryInput[]
+    connectOrCreate?: UserFavorCategoryCreateOrConnectWithoutFoodCategoryInput | UserFavorCategoryCreateOrConnectWithoutFoodCategoryInput[]
+    createMany?: UserFavorCategoryCreateManyFoodCategoryInputEnvelope
+    connect?: UserFavorCategoryWhereUniqueInput | UserFavorCategoryWhereUniqueInput[]
+  }
+
+  export type UserFavorCategoryUpdateManyWithoutFoodCategoryNestedInput = {
+    create?: XOR<UserFavorCategoryCreateWithoutFoodCategoryInput, UserFavorCategoryUncheckedCreateWithoutFoodCategoryInput> | UserFavorCategoryCreateWithoutFoodCategoryInput[] | UserFavorCategoryUncheckedCreateWithoutFoodCategoryInput[]
+    connectOrCreate?: UserFavorCategoryCreateOrConnectWithoutFoodCategoryInput | UserFavorCategoryCreateOrConnectWithoutFoodCategoryInput[]
+    upsert?: UserFavorCategoryUpsertWithWhereUniqueWithoutFoodCategoryInput | UserFavorCategoryUpsertWithWhereUniqueWithoutFoodCategoryInput[]
+    createMany?: UserFavorCategoryCreateManyFoodCategoryInputEnvelope
+    set?: UserFavorCategoryWhereUniqueInput | UserFavorCategoryWhereUniqueInput[]
+    disconnect?: UserFavorCategoryWhereUniqueInput | UserFavorCategoryWhereUniqueInput[]
+    delete?: UserFavorCategoryWhereUniqueInput | UserFavorCategoryWhereUniqueInput[]
+    connect?: UserFavorCategoryWhereUniqueInput | UserFavorCategoryWhereUniqueInput[]
+    update?: UserFavorCategoryUpdateWithWhereUniqueWithoutFoodCategoryInput | UserFavorCategoryUpdateWithWhereUniqueWithoutFoodCategoryInput[]
+    updateMany?: UserFavorCategoryUpdateManyWithWhereWithoutFoodCategoryInput | UserFavorCategoryUpdateManyWithWhereWithoutFoodCategoryInput[]
+    deleteMany?: UserFavorCategoryScalarWhereInput | UserFavorCategoryScalarWhereInput[]
+  }
+
+  export type UserFavorCategoryUncheckedUpdateManyWithoutFoodCategoryNestedInput = {
+    create?: XOR<UserFavorCategoryCreateWithoutFoodCategoryInput, UserFavorCategoryUncheckedCreateWithoutFoodCategoryInput> | UserFavorCategoryCreateWithoutFoodCategoryInput[] | UserFavorCategoryUncheckedCreateWithoutFoodCategoryInput[]
+    connectOrCreate?: UserFavorCategoryCreateOrConnectWithoutFoodCategoryInput | UserFavorCategoryCreateOrConnectWithoutFoodCategoryInput[]
+    upsert?: UserFavorCategoryUpsertWithWhereUniqueWithoutFoodCategoryInput | UserFavorCategoryUpsertWithWhereUniqueWithoutFoodCategoryInput[]
+    createMany?: UserFavorCategoryCreateManyFoodCategoryInputEnvelope
+    set?: UserFavorCategoryWhereUniqueInput | UserFavorCategoryWhereUniqueInput[]
+    disconnect?: UserFavorCategoryWhereUniqueInput | UserFavorCategoryWhereUniqueInput[]
+    delete?: UserFavorCategoryWhereUniqueInput | UserFavorCategoryWhereUniqueInput[]
+    connect?: UserFavorCategoryWhereUniqueInput | UserFavorCategoryWhereUniqueInput[]
+    update?: UserFavorCategoryUpdateWithWhereUniqueWithoutFoodCategoryInput | UserFavorCategoryUpdateWithWhereUniqueWithoutFoodCategoryInput[]
+    updateMany?: UserFavorCategoryUpdateManyWithWhereWithoutFoodCategoryInput | UserFavorCategoryUpdateManyWithWhereWithoutFoodCategoryInput[]
+    deleteMany?: UserFavorCategoryScalarWhereInput | UserFavorCategoryScalarWhereInput[]
+  }
+
+  export type UserCreateNestedOneWithoutUserFavorCategoriesInput = {
+    create?: XOR<UserCreateWithoutUserFavorCategoriesInput, UserUncheckedCreateWithoutUserFavorCategoriesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutUserFavorCategoriesInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type FoodCategoryCreateNestedOneWithoutUserFavorCategoriesInput = {
+    create?: XOR<FoodCategoryCreateWithoutUserFavorCategoriesInput, FoodCategoryUncheckedCreateWithoutUserFavorCategoriesInput>
+    connectOrCreate?: FoodCategoryCreateOrConnectWithoutUserFavorCategoriesInput
+    connect?: FoodCategoryWhereUniqueInput
+  }
+
+  export type UserUpdateOneWithoutUserFavorCategoriesNestedInput = {
+    create?: XOR<UserCreateWithoutUserFavorCategoriesInput, UserUncheckedCreateWithoutUserFavorCategoriesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutUserFavorCategoriesInput
+    upsert?: UserUpsertWithoutUserFavorCategoriesInput
+    disconnect?: UserWhereInput | boolean
+    delete?: UserWhereInput | boolean
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutUserFavorCategoriesInput, UserUpdateWithoutUserFavorCategoriesInput>, UserUncheckedUpdateWithoutUserFavorCategoriesInput>
+  }
+
+  export type FoodCategoryUpdateOneRequiredWithoutUserFavorCategoriesNestedInput = {
+    create?: XOR<FoodCategoryCreateWithoutUserFavorCategoriesInput, FoodCategoryUncheckedCreateWithoutUserFavorCategoriesInput>
+    connectOrCreate?: FoodCategoryCreateOrConnectWithoutUserFavorCategoriesInput
+    upsert?: FoodCategoryUpsertWithoutUserFavorCategoriesInput
+    connect?: FoodCategoryWhereUniqueInput
+    update?: XOR<XOR<FoodCategoryUpdateToOneWithWhereWithoutUserFavorCategoriesInput, FoodCategoryUpdateWithoutUserFavorCategoriesInput>, FoodCategoryUncheckedUpdateWithoutUserFavorCategoriesInput>
+  }
+
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
   export type NestedIntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
     lt?: number | IntFieldRefInput<$PrismaModel>
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
@@ -2393,8 +5093,8 @@ export namespace Prisma {
 
   export type NestedStringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[] | ListStringFieldRefInput<$PrismaModel>
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    in?: string[]
+    notIn?: string[]
     lt?: string | StringFieldRefInput<$PrismaModel>
     lte?: string | StringFieldRefInput<$PrismaModel>
     gt?: string | StringFieldRefInput<$PrismaModel>
@@ -2402,13 +5102,14 @@ export namespace Prisma {
     contains?: string | StringFieldRefInput<$PrismaModel>
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
   export type NestedDateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[]
+    notIn?: Date[] | string[]
     lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
@@ -2418,8 +5119,8 @@ export namespace Prisma {
 
   export type NestedStringNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    in?: string[] | null
+    notIn?: string[] | null
     lt?: string | StringFieldRefInput<$PrismaModel>
     lte?: string | StringFieldRefInput<$PrismaModel>
     gt?: string | StringFieldRefInput<$PrismaModel>
@@ -2427,13 +5128,25 @@ export namespace Prisma {
     contains?: string | StringFieldRefInput<$PrismaModel>
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | null
+    notIn?: Date[] | string[] | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
     lt?: number | IntFieldRefInput<$PrismaModel>
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
@@ -2448,8 +5161,8 @@ export namespace Prisma {
 
   export type NestedFloatFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
     lt?: number | FloatFieldRefInput<$PrismaModel>
     lte?: number | FloatFieldRefInput<$PrismaModel>
     gt?: number | FloatFieldRefInput<$PrismaModel>
@@ -2459,8 +5172,8 @@ export namespace Prisma {
 
   export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[] | ListStringFieldRefInput<$PrismaModel>
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    in?: string[]
+    notIn?: string[]
     lt?: string | StringFieldRefInput<$PrismaModel>
     lte?: string | StringFieldRefInput<$PrismaModel>
     gt?: string | StringFieldRefInput<$PrismaModel>
@@ -2468,6 +5181,7 @@ export namespace Prisma {
     contains?: string | StringFieldRefInput<$PrismaModel>
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
     not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedStringFilter<$PrismaModel>
@@ -2476,8 +5190,8 @@ export namespace Prisma {
 
   export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[]
+    notIn?: Date[] | string[]
     lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
@@ -2490,8 +5204,8 @@ export namespace Prisma {
 
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    in?: string[] | null
+    notIn?: string[] | null
     lt?: string | StringFieldRefInput<$PrismaModel>
     lte?: string | StringFieldRefInput<$PrismaModel>
     gt?: string | StringFieldRefInput<$PrismaModel>
@@ -2499,6 +5213,7 @@ export namespace Prisma {
     contains?: string | StringFieldRefInput<$PrismaModel>
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
     not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedStringNullableFilter<$PrismaModel>
@@ -2507,13 +5222,305 @@ export namespace Prisma {
 
   export type NestedIntNullableFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
     lt?: number | IntFieldRefInput<$PrismaModel>
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | null
+    notIn?: Date[] | string[] | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type UserFavorCategoryCreateWithoutUserInput = {
+    createAt?: Date | string | null
+    updatedAt?: Date | string | null
+    foodCategory: FoodCategoryCreateNestedOneWithoutUserFavorCategoriesInput
+  }
+
+  export type UserFavorCategoryUncheckedCreateWithoutUserInput = {
+    id?: number
+    foodCategoryId: number
+    createAt?: Date | string | null
+    updatedAt?: Date | string | null
+  }
+
+  export type UserFavorCategoryCreateOrConnectWithoutUserInput = {
+    where: UserFavorCategoryWhereUniqueInput
+    create: XOR<UserFavorCategoryCreateWithoutUserInput, UserFavorCategoryUncheckedCreateWithoutUserInput>
+  }
+
+  export type UserFavorCategoryCreateManyUserInputEnvelope = {
+    data: UserFavorCategoryCreateManyUserInput | UserFavorCategoryCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type UserFavorCategoryUpsertWithWhereUniqueWithoutUserInput = {
+    where: UserFavorCategoryWhereUniqueInput
+    update: XOR<UserFavorCategoryUpdateWithoutUserInput, UserFavorCategoryUncheckedUpdateWithoutUserInput>
+    create: XOR<UserFavorCategoryCreateWithoutUserInput, UserFavorCategoryUncheckedCreateWithoutUserInput>
+  }
+
+  export type UserFavorCategoryUpdateWithWhereUniqueWithoutUserInput = {
+    where: UserFavorCategoryWhereUniqueInput
+    data: XOR<UserFavorCategoryUpdateWithoutUserInput, UserFavorCategoryUncheckedUpdateWithoutUserInput>
+  }
+
+  export type UserFavorCategoryUpdateManyWithWhereWithoutUserInput = {
+    where: UserFavorCategoryScalarWhereInput
+    data: XOR<UserFavorCategoryUpdateManyMutationInput, UserFavorCategoryUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type UserFavorCategoryScalarWhereInput = {
+    AND?: UserFavorCategoryScalarWhereInput | UserFavorCategoryScalarWhereInput[]
+    OR?: UserFavorCategoryScalarWhereInput[]
+    NOT?: UserFavorCategoryScalarWhereInput | UserFavorCategoryScalarWhereInput[]
+    id?: IntFilter<"UserFavorCategory"> | number
+    userId?: IntNullableFilter<"UserFavorCategory"> | number | null
+    foodCategoryId?: IntFilter<"UserFavorCategory"> | number
+    createAt?: DateTimeNullableFilter<"UserFavorCategory"> | Date | string | null
+    updatedAt?: DateTimeNullableFilter<"UserFavorCategory"> | Date | string | null
+  }
+
+  export type UserFavorCategoryCreateWithoutFoodCategoryInput = {
+    createAt?: Date | string | null
+    updatedAt?: Date | string | null
+    user?: UserCreateNestedOneWithoutUserFavorCategoriesInput
+  }
+
+  export type UserFavorCategoryUncheckedCreateWithoutFoodCategoryInput = {
+    id?: number
+    userId?: number | null
+    createAt?: Date | string | null
+    updatedAt?: Date | string | null
+  }
+
+  export type UserFavorCategoryCreateOrConnectWithoutFoodCategoryInput = {
+    where: UserFavorCategoryWhereUniqueInput
+    create: XOR<UserFavorCategoryCreateWithoutFoodCategoryInput, UserFavorCategoryUncheckedCreateWithoutFoodCategoryInput>
+  }
+
+  export type UserFavorCategoryCreateManyFoodCategoryInputEnvelope = {
+    data: UserFavorCategoryCreateManyFoodCategoryInput | UserFavorCategoryCreateManyFoodCategoryInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type UserFavorCategoryUpsertWithWhereUniqueWithoutFoodCategoryInput = {
+    where: UserFavorCategoryWhereUniqueInput
+    update: XOR<UserFavorCategoryUpdateWithoutFoodCategoryInput, UserFavorCategoryUncheckedUpdateWithoutFoodCategoryInput>
+    create: XOR<UserFavorCategoryCreateWithoutFoodCategoryInput, UserFavorCategoryUncheckedCreateWithoutFoodCategoryInput>
+  }
+
+  export type UserFavorCategoryUpdateWithWhereUniqueWithoutFoodCategoryInput = {
+    where: UserFavorCategoryWhereUniqueInput
+    data: XOR<UserFavorCategoryUpdateWithoutFoodCategoryInput, UserFavorCategoryUncheckedUpdateWithoutFoodCategoryInput>
+  }
+
+  export type UserFavorCategoryUpdateManyWithWhereWithoutFoodCategoryInput = {
+    where: UserFavorCategoryScalarWhereInput
+    data: XOR<UserFavorCategoryUpdateManyMutationInput, UserFavorCategoryUncheckedUpdateManyWithoutFoodCategoryInput>
+  }
+
+  export type UserCreateWithoutUserFavorCategoriesInput = {
+    email: string
+    name: string
+    sex: string
+    birth: Date | string
+    address: string
+    detail_address?: string | null
+    phone: string
+    createAt?: Date | string | null
+    modifiedAt?: Date | string | null
+  }
+
+  export type UserUncheckedCreateWithoutUserFavorCategoriesInput = {
+    id?: number
+    email: string
+    name: string
+    sex: string
+    birth: Date | string
+    address: string
+    detail_address?: string | null
+    phone: string
+    createAt?: Date | string | null
+    modifiedAt?: Date | string | null
+  }
+
+  export type UserCreateOrConnectWithoutUserFavorCategoriesInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutUserFavorCategoriesInput, UserUncheckedCreateWithoutUserFavorCategoriesInput>
+  }
+
+  export type FoodCategoryCreateWithoutUserFavorCategoriesInput = {
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type FoodCategoryUncheckedCreateWithoutUserFavorCategoriesInput = {
+    id?: number
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type FoodCategoryCreateOrConnectWithoutUserFavorCategoriesInput = {
+    where: FoodCategoryWhereUniqueInput
+    create: XOR<FoodCategoryCreateWithoutUserFavorCategoriesInput, FoodCategoryUncheckedCreateWithoutUserFavorCategoriesInput>
+  }
+
+  export type UserUpsertWithoutUserFavorCategoriesInput = {
+    update: XOR<UserUpdateWithoutUserFavorCategoriesInput, UserUncheckedUpdateWithoutUserFavorCategoriesInput>
+    create: XOR<UserCreateWithoutUserFavorCategoriesInput, UserUncheckedCreateWithoutUserFavorCategoriesInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutUserFavorCategoriesInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutUserFavorCategoriesInput, UserUncheckedUpdateWithoutUserFavorCategoriesInput>
+  }
+
+  export type UserUpdateWithoutUserFavorCategoriesInput = {
+    email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    sex?: StringFieldUpdateOperationsInput | string
+    birth?: DateTimeFieldUpdateOperationsInput | Date | string
+    address?: StringFieldUpdateOperationsInput | string
+    detail_address?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: StringFieldUpdateOperationsInput | string
+    createAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    modifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type UserUncheckedUpdateWithoutUserFavorCategoriesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    sex?: StringFieldUpdateOperationsInput | string
+    birth?: DateTimeFieldUpdateOperationsInput | Date | string
+    address?: StringFieldUpdateOperationsInput | string
+    detail_address?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: StringFieldUpdateOperationsInput | string
+    createAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    modifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type FoodCategoryUpsertWithoutUserFavorCategoriesInput = {
+    update: XOR<FoodCategoryUpdateWithoutUserFavorCategoriesInput, FoodCategoryUncheckedUpdateWithoutUserFavorCategoriesInput>
+    create: XOR<FoodCategoryCreateWithoutUserFavorCategoriesInput, FoodCategoryUncheckedCreateWithoutUserFavorCategoriesInput>
+    where?: FoodCategoryWhereInput
+  }
+
+  export type FoodCategoryUpdateToOneWithWhereWithoutUserFavorCategoriesInput = {
+    where?: FoodCategoryWhereInput
+    data: XOR<FoodCategoryUpdateWithoutUserFavorCategoriesInput, FoodCategoryUncheckedUpdateWithoutUserFavorCategoriesInput>
+  }
+
+  export type FoodCategoryUpdateWithoutUserFavorCategoriesInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FoodCategoryUncheckedUpdateWithoutUserFavorCategoriesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserFavorCategoryCreateManyUserInput = {
+    id?: number
+    foodCategoryId: number
+    createAt?: Date | string | null
+    updatedAt?: Date | string | null
+  }
+
+  export type UserFavorCategoryUpdateWithoutUserInput = {
+    createAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    foodCategory?: FoodCategoryUpdateOneRequiredWithoutUserFavorCategoriesNestedInput
+  }
+
+  export type UserFavorCategoryUncheckedUpdateWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    foodCategoryId?: IntFieldUpdateOperationsInput | number
+    createAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type UserFavorCategoryUncheckedUpdateManyWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    foodCategoryId?: IntFieldUpdateOperationsInput | number
+    createAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type UserFavorCategoryCreateManyFoodCategoryInput = {
+    id?: number
+    userId?: number | null
+    createAt?: Date | string | null
+    updatedAt?: Date | string | null
+  }
+
+  export type UserFavorCategoryUpdateWithoutFoodCategoryInput = {
+    createAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    user?: UserUpdateOneWithoutUserFavorCategoriesNestedInput
+  }
+
+  export type UserFavorCategoryUncheckedUpdateWithoutFoodCategoryInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: NullableIntFieldUpdateOperationsInput | number | null
+    createAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type UserFavorCategoryUncheckedUpdateManyWithoutFoodCategoryInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: NullableIntFieldUpdateOperationsInput | number | null
+    createAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
 

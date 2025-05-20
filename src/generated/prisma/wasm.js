@@ -124,11 +124,28 @@ exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
   email: 'email',
   name: 'name',
-  gender: 'gender',
+  sex: 'sex',
   birth: 'birth',
   address: 'address',
-  detailAddress: 'detailAddress',
-  phoneNumber: 'phoneNumber'
+  detail_address: 'detail_address',
+  phone: 'phone',
+  createAt: 'createAt',
+  modifiedAt: 'modifiedAt'
+};
+
+exports.Prisma.FoodCategoryScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.UserFavorCategoryScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  foodCategoryId: 'foodCategoryId',
+  createAt: 'createAt',
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.SortOrder = {
@@ -136,19 +153,29 @@ exports.Prisma.SortOrder = {
   desc: 'desc'
 };
 
-exports.Prisma.QueryMode = {
-  default: 'default',
-  insensitive: 'insensitive'
-};
-
 exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
 
+exports.Prisma.UserOrderByRelevanceFieldEnum = {
+  email: 'email',
+  name: 'name',
+  sex: 'sex',
+  address: 'address',
+  detail_address: 'detail_address',
+  phone: 'phone'
+};
+
+exports.Prisma.FoodCategoryOrderByRelevanceFieldEnum = {
+  name: 'name'
+};
+
 
 exports.Prisma.ModelName = {
-  User: 'User'
+  User: 'User',
+  FoodCategory: 'FoodCategory',
+  UserFavorCategory: 'UserFavorCategory'
 };
 
 /**
